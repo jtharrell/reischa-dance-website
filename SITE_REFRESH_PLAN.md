@@ -100,14 +100,26 @@ and `astro-site/src/pages/events/index.astro`.
 Verified with Playwright screenshots (desktop + mobile) across all new
 pages - no console errors.
 
-## Phase 3 - Media
-- Photo galleries (32 "Live" + 16 "Studio" images, each with a hand-made
-  `*thumb.jpg`): replace Lightbox/Prototype/Scriptaculous with a CSS Grid of
-  images + a lightbox built on the native `<dialog>` element (no dependency).
-- Video page: drop Highslide, embed YouTube via responsive `iframe` in an
-  `aspect-ratio` container - no JS needed.
-- Compress/resize the 135 source images; use Astro's built-in image
-  optimization for responsive `srcset` + lazy loading.
+## Phase 3 - Media (done)
+- Photo galleries (32 "Live" + 16 "Studio"): old hand-made `*thumb.jpg`
+  files were dropped - all originals moved to `src/assets/gallery/{live,studio}/`
+  and Astro's `astro:assets` pipeline now generates every size (build
+  output showed 452kB/570kB/etc. JPEGs down to 14-70kB webp thumbnails, 96
+  images total). `GalleryGrid.astro` renders a CSS-columns masonry grid
+  (natural aspect ratios, no cropping) plus a single reusable lightbox
+  built on the native `<dialog>` element - vanilla JS only (no dependency)
+  for open/close/prev/next, keyboard arrow + Escape support.
+- Video pages: dropped Highslide entirely. `VideoEmbed.astro` renders a
+  plain responsive `iframe` (youtube-nocookie.com, `loading="lazy"`) inside
+  an `aspect-ratio: 16/9` wrapper - no JS needed. Split into `/videos/`
+  (solo dances, was `Video_.html`) and `/videos/group-choreography/` (was
+  `Video_2.html`), cross-linked like the originals.
+- Verified via Playwright: build output confirms all 96 images optimized
+  with no errors/warnings; exercised the lightbox open/next/close flow and
+  confirmed all 4 video iframes on both pages actually load
+  (`page.frames()` showed all 4 youtube-nocookie.com embeds resolve once
+  scrolled into view - confirmed a "blank" 4th video in one screenshot was
+  just a lazy-load timing artifact of the screenshot itself, not a bug).
 
 ## Phase 4 - Contact form
 - Static form posting to Formspree in place of `sendemail.php`.

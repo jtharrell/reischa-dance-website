@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import VideoEmbed from '../../components/VideoEmbed.astro';
+
+const videos = [
+	{ videoId: 'CwP2MPEUDFs', title: 'Zeina', caption: 'Vanderbilt Dance Concert. Choreography by Reischa.' },
+	{ videoId: 'xV64UfSFoR8', title: 'Alf Leyla wa Leyla', caption: 'Vanderbilt Dance Concert. Choreography by Reischa.' },
+	{ videoId: '-UQiFi1PzrU', title: 'Nebtiti Menin el Hekia', caption: 'Vanderbilt Dance Concert. Choreography by Reischa.' },
+	{ videoId: 'MZXbljwOPss', title: 'Channel 4 News', caption: 'Reischa promoting the Vanderbilt Dance Program.' },
+];
+---
+
+<BaseLayout title="Group Choreography Videos" description="Group choreography bellydance videos by Reischa, performed with the Vanderbilt Dance Program.">
+	<h1>Videos &mdash; Group Choreography</h1>
+	<div class="video-grid">
+		{videos.map((video) => <VideoEmbed {...video} />)}
+	</div>
+	<a class="back-link" href="/videos/">&larr; Solo Dances</a>
+</BaseLayout>
+
+<style>
+	.video-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 2rem;
+	}
+
+	@media (min-width: 40rem) {
+		.video-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+</style>

@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import GalleryGrid from '../../components/GalleryGrid.astro';
+
+const imageModules = import.meta.glob<{ default: ImageMetadata }>('/src/assets/gallery/studio/*.jpg', { eager: true });
+const images = Object.keys(imageModules)
+	.sort()
+	.map((path) => imageModules[path].default);
+---
+
+<BaseLayout title="Studio Photos" description="Studio photos of Reischa bellydancing.">
+	<h1>Studio Photos</h1>
+	<GalleryGrid images={images} altPrefix="Reischa studio photo" />
+	<a class="back-link" href="/gallery/">&larr; Back to Gallery</a>
+</BaseLayout>

@@ -1,8 +1,33 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import VideoEmbed from '../../components/VideoEmbed.astro';
+
+const videos = [
+	{ videoId: 'wXhiKzhi8Oc', title: 'Zeina', caption: 'Dancing a benefit at That\'s Cool Speakeasy.' },
+	{ videoId: '-Qeidiv9lbs', title: 'Tamra Henna', caption: 'Art Benefit at Daisy Dukes, November 2013.' },
+	{ videoId: 'OOoIjIKBjbM', title: 'Nebtiti Menin el Hekia', caption: 'Dancing at Euro Grill on New Years Eve.' },
+	{ videoId: 'DmwqNpDK-Fs', title: 'Improvising', caption: 'Reischa dancing at an Egyptian Baby Shower.' },
+];
 ---
 
-<BaseLayout title="Videos">
-	<h1>Videos</h1>
-	<p><em>Content migration in progress — check back soon.</em></p>
+<BaseLayout title="Videos" description="Solo bellydance performance videos by Reischa.">
+	<h1>Videos &mdash; Solo Dances</h1>
+	<div class="video-grid">
+		{videos.map((video) => <VideoEmbed {...video} />)}
+	</div>
+	<a class="back-link" href="/videos/group-choreography/">Group Choreography &rarr;</a>
 </BaseLayout>
+
+<style>
+	.video-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 2rem;
+	}
+
+	@media (min-width: 40rem) {
+		.video-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+</style>
