@@ -1,6 +1,28 @@
-/* Baseline reset + responsive nav. Full brand styling (palette, type, grain
-   texture) lands in Phase 1 — this file just makes the layout functional
-   and mobile-safe in the meantime. */
+/* Design tokens carried over from the original site's brand assets:
+   the "Reischa Bellydance" script wordmark (deep maroon on white with a
+   lavender flourish), the pink/mauve gradient nav bar, the tiled pink
+   grain texture, and the #ffc5e8 page background. Body/nav text moves
+   off pure white-on-pink (the old site's low-contrast combo) onto a dark
+   plum ink for readability, while keeping the same color family. */
+
+:root {
+	--color-page-bg: #ffc5e8;
+	--color-surface: #fff6fb;
+	--color-maroon: #7a1f45;
+	--color-maroon-dark: #5c1735;
+	--color-mauve: #b94a78;
+	--color-mauve-light: #e28fb3;
+	--color-lavender: #d8bee0;
+	--color-ink: #3a2430;
+	--color-ink-soft: #6b4a5a;
+	--color-white: #ffffff;
+
+	--font-script: 'Alex Brush', cursive;
+	--font-heading: 'Playfair Display', Georgia, serif;
+	--font-body: 'Mulish', Arial, Helvetica, sans-serif;
+
+	--content-max-width: 60rem;
+}
 
 *, *::before, *::after {
 	box-sizing: border-box;
@@ -8,8 +30,28 @@
 
 body {
 	margin: 0;
-	font-family: Arial, Helvetica, sans-serif;
-	line-height: 1.5;
+	font-family: var(--font-body);
+	line-height: 1.6;
+	color: var(--color-ink);
+	background-color: var(--color-page-bg);
+	background-image: url('/textures/grain.jpg');
+	background-attachment: fixed;
+	background-position: center center;
+	background-repeat: repeat;
+}
+
+h1, h2, h3, h4 {
+	font-family: var(--font-heading);
+	color: var(--color-maroon);
+	line-height: 1.25;
+}
+
+a {
+	color: var(--color-maroon);
+}
+
+a:hover {
+	color: var(--color-mauve);
 }
 
 .sr-only {
@@ -24,28 +66,54 @@ body {
 	border: 0;
 }
 
+/* Header + nav */
+
 .site-header {
 	position: relative;
+	/* Both stops keep white nav text at >= 4.5:1 contrast (WCAG AA) -
+	   color-mauve-light is reserved for decorative/hover use only, never
+	   as a background under white text. */
+	background: linear-gradient(135deg, var(--color-maroon-dark), var(--color-mauve));
 }
 
 .site-header__bar {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding: 0.75rem 1rem;
+	padding: 0.75rem 1.25rem;
 }
 
 .site-header__brand {
-	font-weight: bold;
-	font-size: 1.25rem;
+	font-family: var(--font-script);
+	font-size: 2rem;
 	text-decoration: none;
-	color: inherit;
+	color: var(--color-white);
+	line-height: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 0.15rem;
+}
+
+.site-header__tagline {
+	font-family: var(--font-body);
+	font-size: 0.7rem;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--color-lavender);
+	display: none;
+}
+
+@media (min-width: 48rem) {
+	.site-header__tagline {
+		display: block;
+	}
 }
 
 .nav-toggle {
 	display: block;
-	background: none;
-	border: 1px solid currentColor;
+	background: rgb(255 255 255 / 12%);
+	border: 1px solid rgb(255 255 255 / 60%);
 	border-radius: 4px;
 	padding: 0.5rem 0.75rem;
 	cursor: pointer;
@@ -57,7 +125,7 @@ body {
 	display: block;
 	width: 1.25rem;
 	height: 2px;
-	background: currentColor;
+	background: var(--color-white);
 }
 
 .nav-toggle__bars::before {
@@ -81,29 +149,43 @@ body {
 .primary-nav ul {
 	list-style: none;
 	margin: 0;
-	padding: 0.5rem 1rem 1rem;
+	padding: 0.5rem 1.25rem 1rem;
 	display: flex;
 	flex-direction: column;
-	gap: 0.5rem;
+	gap: 0.25rem;
 }
 
 .primary-nav a {
 	text-decoration: none;
-	color: inherit;
+	color: var(--color-white);
+	font-weight: 600;
+	letter-spacing: 0.02em;
 	display: block;
 	padding: 0.5rem 0;
+	border-bottom: 1px solid rgb(255 255 255 / 15%);
+}
+
+.primary-nav a:hover,
+.primary-nav a:focus-visible {
+	text-decoration: underline;
+	text-decoration-thickness: 2px;
+	text-underline-offset: 0.2em;
 }
 
 main {
-	padding: 1rem;
-	max-width: 60rem;
-	margin: 0 auto;
+	max-width: var(--content-max-width);
+	margin: 1.5rem auto 3rem;
+	padding: 1.75rem 1.5rem;
+	background: var(--color-surface);
+	border-radius: 12px;
+	box-shadow: 0 10px 30px rgb(122 31 69 / 12%);
 }
 
 .site-footer {
 	text-align: center;
-	padding: 1rem;
+	padding: 1.5rem 1rem;
 	font-size: 0.85rem;
+	color: var(--color-ink-soft);
 }
 
 @media (min-width: 48rem) {
@@ -119,7 +201,11 @@ main {
 		flex-direction: row;
 		flex-wrap: wrap;
 		justify-content: center;
-		gap: 1.5rem;
-		padding: 0 1rem 0.75rem;
+		gap: 1.75rem;
+		padding: 0 1.25rem 1rem;
+	}
+
+	.primary-nav a {
+		border-bottom: none;
 	}
 }

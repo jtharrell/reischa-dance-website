@@ -1,4 +1,11 @@
 ---
+import '@fontsource/alex-brush';
+import '@fontsource/playfair-display/400.css';
+import '@fontsource/playfair-display/700.css';
+import '@fontsource/mulish/400.css';
+import '@fontsource/mulish/600.css';
+import '../styles/global.css';
+
 export interface Props {
 	title: string;
 	description?: string;
@@ -32,7 +39,10 @@ const navLinks = [
 	<body>
 		<header class="site-header">
 			<div class="site-header__bar">
-				<a class="site-header__brand" href="/">Reischa Dance</a>
+				<a class="site-header__brand" href="/">
+					Reischa Bellydance
+					<span class="site-header__tagline">Belly Dancer &middot; Actress &middot; Flamenco Dancer</span>
+				</a>
 				<button
 					class="nav-toggle"
 					id="nav-toggle"
@@ -68,9 +78,5 @@ const navLinks = [
 				toggle.setAttribute('aria-expanded', String(Boolean(isOpen)));
 			});
 		</script>
-
-		<style is:global>
-			@import '../styles/global.css';
-		</style>
 	</body>
 </html>

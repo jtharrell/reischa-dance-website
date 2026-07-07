@@ -12,6 +12,9 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@fontsource/alex-brush": "^5.2.8",
+    "@fontsource/mulish": "^5.2.8",
+    "@fontsource/playfair-display": "^5.2.8",
     "astro": "^7.0.6"
   }
 }

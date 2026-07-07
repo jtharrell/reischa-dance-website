@@ -37,13 +37,25 @@ all.
 - Verified: `npm run build` in `astro-site/` produces all 9 pages plus
   `dist/CNAME`; dev server serves the homepage with nav markup intact.
 
-## Phase 1 - Design system
-- One shared `BaseLayout.astro` (header/nav/footer) instead of per-page
-  copy-pasted table markup.
-- Global stylesheet: CSS Grid/Flexbox, relative units, mobile-first
-  breakpoints. Keep the site's actual brand identity (pink/magenta palette,
-  grain background texture, script-style heading font) rather than
-  genericizing it.
+## Phase 1 - Design system (done)
+- Brand identity sourced from the old site's actual graphics
+  (`Main_graphic_6-4-2014.jpg` wordmark, `bottom.jpg` nav bar, `Grain.jpg`
+  texture) rather than guessed: deep-maroon script wordmark, pink/mauve
+  gradient header, tiled grain texture on a `#ffc5e8` page background.
+- Fonts (self-hosted via `@fontsource`, no third-party font requests):
+  Alex Brush (script, wordmark only), Playfair Display (headings), Mulish
+  (body/nav - replaces the old Arial default with something more refined
+  but still highly legible on mobile).
+- Design tokens as CSS custom properties in `astro-site/src/styles/global.css`.
+- Content sits on a white/blush card (`--color-surface`) with a dark plum
+  ink color instead of the old white-text-on-pink combo, fixing the
+  original's low-contrast body text.
+- Verified with Playwright screenshots (mobile 390px, desktop 1280px, and
+  the mobile nav opened) - no console errors. Caught and fixed a real
+  accessibility bug this way: the header gradient's lighter stop gave white
+  nav text ~2.4:1 contrast (WCAG AA needs 4.5:1) - narrowed the gradient to
+  two stops that both stay >= 4.5:1, and switched the nav hover/focus style
+  from a lighter text color (also failed contrast) to an underline.
 
 ## Phase 2 - Content migration (page by page)
 | Old | New |
