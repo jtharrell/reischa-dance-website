@@ -10,8 +10,11 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 		<strong>Reischa Feuerbacher</strong> &mdash; (615) 593-7119
 	</p>
 
-	<!-- Phase 4 wires this up to a Formspree endpoint once one exists. -->
-	<form method="POST" action="https://formspree.io/f/TODO">
+	<form method="POST" action="https://formspree.io/f/mlgyvpzr">
+		<input type="hidden" name="_next" value="https://reischadance.com/contact/thanks/" />
+		<input type="hidden" name="_subject" value="New message from reischadance.com" />
+		<input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+
 		<p>
 			<label for="visitor">Name</label><br />
 			<input type="text" id="visitor" name="name" required />

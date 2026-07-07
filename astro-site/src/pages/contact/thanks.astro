@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Thank You" description="Thank you for contacting Reischa.">
+	<div class="thanks">
+		<p class="thanks__script">Thanks</p>
+		<p class="lede">
+			Your message has been sent. Reischa will get back to you as soon as
+			she can.
+		</p>
+		<a class="back-link" href="/">&larr; Back Home</a>
+	</div>
+</BaseLayout>
+
+<style>
+	.thanks {
+		text-align: center;
+		padding: 2rem 0;
+	}
+
+	.thanks__script {
+		font-family: var(--font-script);
+		font-size: 4rem;
+		color: var(--color-maroon);
+		margin: 0 0 0.5rem;
+	}
+</style>

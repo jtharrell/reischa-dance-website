@@ -121,8 +121,20 @@ pages - no console errors.
   scrolled into view - confirmed a "blank" 4th video in one screenshot was
   just a lazy-load timing artifact of the screenshot itself, not a bug).
 
-## Phase 4 - Contact form
-- Static form posting to Formspree in place of `sendemail.php`.
+## Phase 4 - Contact form (done)
+- Static form posts to the real Formspree endpoint
+  (`https://formspree.io/f/mlgyvpzr`) in place of the non-functional
+  `sendemail.php`. Includes a `_gotcha` honeypot field, a `_subject`
+  line, and a `_next` redirect to `/contact/thanks/`.
+- New `/contact/thanks/` page recreates the original's ornate "Thanks"
+  graphic as real text in the Alex Brush script font (design-system
+  consistent) instead of embedding the old low-res JPEG.
+- Verified via Playwright without spending a real submission: confirmed
+  the form posts to the correct endpoint with the right hidden fields,
+  and that HTML5 `required` validation blocks an empty submission
+  (page doesn't navigate). The user submitted the real first test
+  message themselves, since Formspree's free tier ties activation to
+  the account owner confirming via email.
 
 ## Phase 5 - QA & launch
 - Test mobile/tablet/desktop breakpoints, verify all internal links.
