@@ -57,22 +57,48 @@ all.
   two stops that both stay >= 4.5:1, and switched the nav hover/focus style
   from a lighter text color (also failed contrast) to an underline.
 
-## Phase 2 - Content migration (page by page)
+## Phase 2 - Content migration (page by page) (done)
 | Old | New |
 |---|---|
-| `index.html` | `/` |
-| `Belly_Dance_.html` | `/what-is-belly-dance` |
-| `Bios/Reischa_.html`, `Resume_.html` | `/about`, `/about/resume` |
-| `Classes/*` (Classes, Attire, Millennium, Vandy, Vandy2) | `/classes` + subpages |
-| `Events/Events_.html`, `Perf_Past_.html` | `/events`, `/events/past` |
-| `Pictures/Pictures_.html`, `Live_.html`, `Studio_.html` | `/gallery`, `/gallery/live`, `/gallery/studio` |
-| `Video/Video_.html`, `Video_2.html` | `/videos` |
-| `Links/Links_.html` | `/links` |
-| `Contact/Contact_.html` | `/contact` |
-| `Acting/acting.html` | `/acting` |
+| `index.html` | `/` (real bio copy + "More on the artist" list, done in Phase 0/2) |
+| `Belly_Dance_.html` | `/what-is-belly-dance/` |
+| `Bios/Reischa_.html`, `Resume_.html` | `/about/`, `/about/resume/` |
+| `Classes/Classes_.html` | `/classes/` |
+| `Classes/Attire_.html` | `/classes/attire/` |
+| `Classes/Millennium.html` | `/classes/millennium/` |
+| `Classes/Vandy_.html`, `Vandy2_.html` | `/classes/vanderbilt-bellydance/`, `/classes/vanderbilt-flamenco/` (migrated as-is per decision below) |
+| `Events/Events_.html`, `Perf_Past_.html` | `/events/`, `/events/past/` |
+| `Links/Links_.html` | `/links/` |
+| `Contact/Contact_.html` | `/contact/` (text + form UI now; Formspree wiring is Phase 4) |
+| `Acting/acting.html` | `/acting/` (headshots copied to `public/images/acting/`, restyled to match the design system) |
+| `Pictures/*`, `Video/*` | still Phase 3 - these are media-heavy pages rebuilt alongside the gallery/video lightbox work, so left as stubs for now |
 
-Strip table/font markup, pull actual text content, drop dead/commented-out
-entries (several old pages have HTML comments hiding stale venue names).
+Stripped table/font markup, pulled actual text content, dropped dead/
+commented-out entries (several old pages had HTML comments hiding stale
+venue names, and a dead empty `RSK_.html` link on the old Classes page).
+
+**Decision:** `Vandy_.html`/`Vandy2_.html` (Vanderbilt Dance Program classes,
+Fall 2014 semester) are not linked from the current live Classes page and
+describe a program Reischa no longer teaches for (her 12-year Vanderbilt
+role has ended) - user chose to migrate them as-is anyway, so they're live
+at `/classes/vanderbilt-bellydance/` and `/classes/vanderbilt-flamenco/`,
+linked from `/classes/` under an "archived" heading.
+
+**Resume page:** the original's two/three-column layout tables were
+verified to line up row-for-row (count-checked each section) before being
+restructured as `{title, role, venue}` triples in a responsive
+`.credit-list` component - safer than guessing pairings, and much more
+readable on mobile than the original tables.
+
+**Content needing the user's own update (not a migration bug):** the
+Millennium class listing and the Events page both carry specific dates
+that are already in the past relative to today - these are ported
+verbatim from the old site's live content and will need Reischa/Jay to
+update them directly in `astro-site/src/pages/classes/millennium.astro`
+and `astro-site/src/pages/events/index.astro`.
+
+Verified with Playwright screenshots (desktop + mobile) across all new
+pages - no console errors.
 
 ## Phase 3 - Media
 - Photo galleries (32 "Live" + 16 "Studio" images, each with a hand-made

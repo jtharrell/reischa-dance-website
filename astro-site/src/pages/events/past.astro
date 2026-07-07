@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const columnOne = [
+	'The Nashville Ballet\'s production of "Scheherezade" (Tennessee Performing Arts Center / Nashville, TN.)',
+	'Women\'s Works / Tennessee Women\'s Theater Project',
+	'Drachenburg Folklore Festival / The Factory at Franklin',
+	'Lone Wolf Tattoo Festival',
+	'Vanderbilt International Stress Festivals',
+	'Tabouli\'s Restaurant / Nashville, TN.',
+	'Fattoush Cafe / Hendersonville, TN.',
+	'Parisa\'s Restaurant / Nashville, TN',
+	'Yanni\'s Greek Taverna / Nashville, TN.',
+	'Jimmy\'s Place / Lebanon, TN.',
+	'Echo Concert Series w/ The Nashville Early Music Ensemble',
+	'Hypericon / Nashville, TN.',
+	'The Dark Horse Theater / Nashville, TN.',
+];
+
+const columnTwo = [
+	'Vanderbilt Dance Program Spring and Fall Concerts',
+	'Mediterranean Cuisine / Nashville, TN.',
+	'Funkoush Cafe / Nashville, TN.',
+	'Crazy 8\'s Showcase (Mercy Lounge / Nashville, TN.)',
+	'Figures Of Nashville (Maxwell House / Nashville, TN.)',
+	'100 Oaks Mall / Nashville, TN.',
+	'"Figures of Nashville" (Sheraton / Nashville, TN.)',
+	'Halftime Show / "Nashville Dream" (Female Football Team / Nashville, TN.)',
+	'3rd and Lindsey / Nashville, TN.',
+	'Main Street Playhouse / Goodlettsville, TN.',
+	'Hillsboro Rotary Benefit / Nashville, TN.',
+	'Benefit for Tsunami Aid / Nashville, TN.',
+	'Nirwa Restaurant / Nashville, TN.',
+	'Bebo\'s Cafe',
+	'Habibi\'s Cafe',
+	'Sinbad Cafe',
+];
+---
+
+<BaseLayout title="Notable Past Performances" description="A list of notable past bellydance performances by Reischa.">
+	<h1>Notable Past Performances</h1>
+
+	<div class="link-grid link-grid--two">
+		<div>
+			<ul>
+				{columnOne.map((item) => <li>{item}</li>)}
+			</ul>
+		</div>
+		<div>
+			<ul>
+				{columnTwo.map((item) => <li>{item}</li>)}
+			</ul>
+		</div>
+	</div>
+
+	<a class="back-link" href="/events/">&larr; Back to Events</a>
+</BaseLayout>

@@ -2,7 +2,31 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Contact">
+<BaseLayout title="Contact" description="Contact Reischa about bellydance classes, bookings, and events.">
 	<h1>Contact</h1>
-	<p><em>Content migration in progress — check back soon.</em></p>
+	<p class="lede">
+		For comments or info about <a href="/classes/">Classes</a> or for
+		booking prices, send an e-mail or call:<br />
+		<strong>Reischa Feuerbacher</strong> &mdash; (615) 593-7119
+	</p>
+
+	<!-- Phase 4 wires this up to a Formspree endpoint once one exists. -->
+	<form method="POST" action="https://formspree.io/f/TODO">
+		<p>
+			<label for="visitor">Name</label><br />
+			<input type="text" id="visitor" name="name" required />
+		</p>
+		<p>
+			<label for="email">E-mail</label><br />
+			<input type="email" id="email" name="email" required />
+		</p>
+		<p>
+			<label for="note">Message</label><br />
+			<textarea id="note" name="message" rows="8" required></textarea>
+		</p>
+		<p>
+			<button type="submit">Submit</button>
+			<button type="reset">Reset</button>
+		</p>
+	</form>
 </BaseLayout>

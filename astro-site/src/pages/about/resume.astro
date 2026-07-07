@@ -1,0 +1,210 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const restaurantClub = [
+	['Bebo\'s Cafe', 'Special Guest Dancer'],
+	['Memories Hookah Bar and Restaurant', 'Regularly Featured Dancer'],
+	['Yanni\'s Greek Taverna', 'Featured Dancer'],
+	['Tabouli\'s Restaurant', 'Featured Dancer'],
+	['Fattoush Cafe', 'Featured Dancer'],
+	['Parisa\'s Restaurant', 'Featured Dancer'],
+	['Funkoush Middle Eastern Cafe', 'Featured Dancer'],
+	['Mediterranean Cuisine Restaurant', 'Soloist for select shows with Live Band'],
+	['Istanbul Restaurant', 'Soloist for select shows with Live Band'],
+	['Nirwa Restaurant', 'Soloist for select shows with Live Band'],
+	['Marriot Banquet Hall', 'Soloist for select shows with Live Band'],
+	['Sunrise Banquet Hall', 'Soloist for select shows with Live Band'],
+	['Various Ethnic Weddings', 'Featured Dancer'],
+	['French Quarter', 'Soloist for select shows with Live Band'],
+	['Planet Hollywood', 'Soloist for select shows with Live Band'],
+	['Roscoe\'s Coffee House', 'Soloist for select shows with Live Band'],
+	['Govann\'s Coffee House', 'Soloist for select shows with Live Band'],
+];
+
+const theatreConcert = [
+	['Nashville Ballet\'s Scheherazade', 'Dance Company & Solo', 'TN Performing Arts Center'],
+	['Drachenburg Folklore Show', 'Dancer / Choreographer', 'Factory of Franklin'],
+	['La Colmena Dance Concert', 'Dancer / Choreographer', 'Donelson Arts Center'],
+	['Vanderbilt Dance Concert/s 05 - 08', 'Dancer / Choreographer', 'Vanderbilt Ingram Hall'],
+	['Labyrinthe Belly dance Concert', 'Dancer / Choreographer', 'Dark Horse Theatre'],
+	['Labyrinthe Belly dance Concert/s', 'Dancer / Choreographer', 'Main Street Theater'],
+	['Ideaprov Theater Shows', 'Dancer / Improv Actor', 'Bar Car'],
+	['Ideaprov Theater Shows', 'Dance Company & Solo', 'Mercy Lounge'],
+	['Tsunami Benefit Show', 'Dance Company & Solo', 'Dark Horse Theater'],
+	['Tsunami Benefit Show', 'Dance Company & Solo', 'MTSU Tucker Theater'],
+	['American Cancer Society Benefit', 'Dance Company & Solo', 'Vol. State College Theater'],
+	['Old Time Family Theater Show', 'Dance Company & Solo', 'Opry Mills Mall'],
+];
+
+const filmVideo = [
+	['Mid-day News', 'Interviewee / Vanderbilt Dance Program', 'NBC Channel 4'],
+	['Labyrinthe Belly Dance Company', 'Dance Company & Solo', 'Speers Productions'],
+	['Labyrinthe Video', 'Dance Company & Solo', 'Hi-Five Productions'],
+	['Religions of Small Societies', 'Goddess / Dancer', 'Green Star Productions'],
+];
+
+const festivals = [
+	['Pensacola Renaissance Festival', 'Dancer / Choreographer', 'Pensacola, FL'],
+	['Hypericon Convention', 'Dancer / Choreographer', 'Nashville, TN'],
+	['Mobile Renaissance', 'Dancer / Choreographer', 'Mobile, AL'],
+	['Rogersville Renaissance Festival', 'Dancer / Choreographer', 'Rogersville, TN'],
+	['Essential Living Festival/s', 'Dancer / Choreographer', 'Nashville, TN'],
+	['Figures of Nashville', 'Choreographer', 'Nashville, TN'],
+	['Michigan Renaissance Festival', 'Dancer / Choreographer', 'Holly, MI'],
+	['Asheville Renaissance Festival', 'Dancer / Choreographer', 'Asheville, NC'],
+	['Tennessee Renaissance Festival', 'Dancer / Choreographer', 'Triune, TN'],
+	['Nashville Dream Halftime Show', 'Dancer / Choreographer', 'Nashville, TN'],
+	['Bastille Day Festival', 'Dance Company & Solo', 'Nashville, TN'],
+	['People\'s Branch Theater Benefit', 'Featured Dancer', 'Nashville, TN'],
+	['Zootopia (Nashville Zoo Benefit)', 'Dance Company & Solo', 'Nashville, TN'],
+];
+
+const choreography = [
+	['Vanderbilt Ingram Hall', 'Vanderbilt Dance Concerts (Choreographer)'],
+	['Middle TN State Univ.', 'Tales of Arabian Nights (Choreographer)'],
+];
+
+const education = [
+	['Oriental Technique', 'Laylia White', 'Private Instruction'],
+	['Stylization', 'Aziza', 'Workshops'],
+	['Beginning Oriental', 'Jeanine Rabbit', 'Private Instruction'],
+	['Turkish Stylization & Technique', 'Hakan Kaya', 'Workshop'],
+	['Spanish Classical & Flamenco', 'Lynn Salomon', 'Ongoing Private Instruction'],
+	['Spanish Classical & Flamenco', 'Nancy Cedwick', 'Workshops'],
+	['Flamenco', '(Dame) Marina Lorca', 'Workshops'],
+	['Flamenco', 'Martha Sidahmed', 'Workshops'],
+	['Oriental Technique', 'Suhaila Salimpour', 'Ongoing Study'],
+	['Jamilla Salimpour Technique', 'Jamilla Salimpour', 'Workshops'],
+	['Jazz Technique', 'Stacey Beck', 'Group Instruction'],
+	['Tap Technique', 'Stacey Beck', 'Group Instruction'],
+	['Jazz Technique', 'Angela Armstrong', 'MTSU Group Instruction'],
+	['Ballet', 'Bethel World Outreach', 'Extensive Group Instruction'],
+	['Egyptian Stylization & Technique', 'Ellie Hurgeton', 'Private Instruction'],
+	['Egyptian Stylization', 'Travis Jarrell', 'Workshops'],
+];
+
+const teaching = [
+	['Oriental Technique (Beg / Int.)', 'La Colmena Studio', 'Private & Group'],
+	['Oriental Technique (Beg / Int.)', 'Centennial Park Center', 'Group Instruction'],
+	['Oriental Technique (Beg / Int.)', 'Vanderbilt University Dance Program', 'Group Instruction'],
+	['Oriental Technique (Beg / Int.)', 'Rising Sun Karate & Fitness', 'Group Instruction'],
+	['Master Classes', 'VDP Summer Intensive', 'Group Instruction'],
+	['Oriental Technique', 'Julie\'s School of Dance', 'Group Instruction'],
+	['Oriental Technique', 'Donelson Arts Center', 'Group Instruction'],
+	['Workshops', 'University School', 'Group Instruction'],
+	['Kid\'s Workshops', 'Dance With Stacey', 'Children\'s Camps'],
+	['Flamenco Classes', 'La Colmena Studio', 'Private & Group'],
+	['Flamenco Classes', 'Centennial Park Center', 'Group Instruction'],
+];
+---
+
+<BaseLayout title="Resume" description="Reischa Feuerbacher's professional performance, teaching, and choreography resume.">
+	<div class="resume-header">
+		<h1>Resume for Reischa Feuerbacher</h1>
+		<p class="lede">Professional Oriental Dancer &amp; Instructor</p>
+	</div>
+
+	<section class="resume-section">
+		<h2>Performance Experience &mdash; Restaurant &amp; Club</h2>
+		<ul class="credit-list">
+			{restaurantClub.map(([venue, role]) => (
+				<li><span class="credit-title">{venue}</span><span class="credit-role">{role}</span></li>
+			))}
+		</ul>
+	</section>
+
+	<section class="resume-section">
+		<h2>Theatre / Concert</h2>
+		<ul class="credit-list">
+			{theatreConcert.map(([title, role, venue]) => (
+				<li><span class="credit-title">{title}</span><span class="credit-role">{role}</span><span class="credit-venue">{venue}</span></li>
+			))}
+		</ul>
+	</section>
+
+	<section class="resume-section">
+		<h2>Film / Video</h2>
+		<ul class="credit-list">
+			{filmVideo.map(([title, role, venue]) => (
+				<li><span class="credit-title">{title}</span><span class="credit-role">{role}</span><span class="credit-venue">{venue}</span></li>
+			))}
+		</ul>
+	</section>
+
+	<section class="resume-section">
+		<h2>Festivals &amp; Special Events</h2>
+		<ul class="credit-list">
+			{festivals.map(([title, role, venue]) => (
+				<li><span class="credit-title">{title}</span><span class="credit-role">{role}</span><span class="credit-venue">{venue}</span></li>
+			))}
+		</ul>
+	</section>
+
+	<section class="resume-section">
+		<h2>Choreography Work</h2>
+		<ul class="credit-list">
+			{choreography.map(([venue, project]) => (
+				<li><span class="credit-title">{venue}</span><span class="credit-role">{project}</span></li>
+			))}
+		</ul>
+	</section>
+
+	<section class="resume-section">
+		<h2>Stylization &amp; Specialties</h2>
+		<p>
+			Egyptian &amp; Lebanese Cabaret, American Cabaret, Egyptian
+			Folkloric, Turkish Folkloric, Debke, Cane, Zills, Sword, Veil,
+			Floor work, Choreography, Acting for Dancers.
+		</p>
+	</section>
+
+	<section class="resume-section">
+		<h2>Education</h2>
+		<ul class="credit-list">
+			{education.map(([type, instructor, format]) => (
+				<li><span class="credit-title">{type}</span><span class="credit-role">{instructor}</span><span class="credit-venue">{format}</span></li>
+			))}
+		</ul>
+	</section>
+
+	<section class="resume-section">
+		<h2>Bachelor of Art</h2>
+		<ul class="credit-list">
+			<li><span class="credit-title">Major: Theater Performance</span><span class="credit-role">Minor: Voice</span><span class="credit-venue">Middle Tennessee State University</span></li>
+		</ul>
+	</section>
+
+	<section class="resume-section">
+		<h2>Teaching</h2>
+		<ul class="credit-list">
+			{teaching.map(([type, venue, format]) => (
+				<li><span class="credit-title">{type}</span><span class="credit-role">{venue}</span><span class="credit-venue">{format}</span></li>
+			))}
+		</ul>
+	</section>
+
+	<section class="resume-section">
+		<h2>Miscellaneous</h2>
+		<p>
+			Guest Performer: Workshops &amp; Events in Lexington, Ohio,
+			Florida, Alabama, etc.<br />
+			Spanish Dance Society: Testing up to Level 3, Extensive Theater
+			Training &amp; Performance.<br />
+			Additional Dance Training / Practice with Arabic Musicians.
+		</p>
+		<p>
+			<strong>Presentations</strong><br />
+			Roots, Rhythm &amp; Religion: World Music &amp; Dance at
+			Vanderbilt &mdash; presented on behalf of the Vanderbilt
+			University Dance Program.<br />
+			History &amp; Health Benefits of Bellydance &mdash; TN State
+			Parks Recreation Conference (Metro Parks).<br />
+			Celebrating a Multi-Cultural Christmas &mdash; Nashville Public
+			Library.<br />
+			History &amp; Health Benefits of Bellydance &mdash;
+			International Week at MTSU.
+		</p>
+	</section>
+
+	<a class="back-link" href="/about/">&larr; Back to About</a>
+</BaseLayout>
