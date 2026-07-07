@@ -109,11 +109,13 @@ pages - no console errors.
   (natural aspect ratios, no cropping) plus a single reusable lightbox
   built on the native `<dialog>` element - vanilla JS only (no dependency)
   for open/close/prev/next, keyboard arrow + Escape support.
-- Video pages: dropped Highslide entirely. `VideoEmbed.astro` renders a
-  plain responsive `iframe` (youtube-nocookie.com, `loading="lazy"`) inside
-  an `aspect-ratio: 16/9` wrapper - no JS needed. Split into `/videos/`
-  (solo dances, was `Video_.html`) and `/videos/group-choreography/` (was
-  `Video_2.html`), cross-linked like the originals.
+- Video pages: dropped Highslide entirely. `VideoEmbed.astro` originally
+  rendered a plain responsive `iframe` (youtube-nocookie.com,
+  `loading="lazy"`); Phase 5 Lighthouse testing found this loaded all 4
+  iframes at once (7s LCP), so it's now a click-to-load facade instead -
+  see Phase 5. Split into `/videos/` (solo dances, was `Video_.html`) and
+  `/videos/group-choreography/` (was `Video_2.html`), cross-linked like
+  the originals.
 - Verified via Playwright: build output confirms all 96 images optimized
   with no errors/warnings; exercised the lightbox open/next/close flow and
   confirmed all 4 video iframes on both pages actually load
@@ -137,11 +139,42 @@ pages - no console errors.
   the account owner confirming via email.
 
 ## Phase 5 - QA & launch
-- Test mobile/tablet/desktop breakpoints, verify all internal links.
-- Lighthouse pass for performance/accessibility (current site has missing
-  alt text and low-contrast white-on-pink text in places).
-- Cut over Actions deploy to the new Astro output, confirm CNAME/DNS still
-  resolves.
+### QA (done)
+- Automated crawl (Playwright) of all 20 routes: zero broken internal
+  links, zero 404s, zero console errors.
+- Automated accessibility scan (axe-core) of all 20 routes found 2 real
+  issues, both fixed:
+  - `/contact/thanks/` was missing a real `<h1>` (used a styled `<p>`
+    instead) - fixed.
+  - Two remaining flagged items (`aria-prohibited-attr` on `/videos/*`)
+    were traced to a specific DOM node (`#movie_player`,
+    `data-version=".../player_embed.vflset/..."`) - confirmed via node
+    inspection this is YouTube's own embedded-player markup, not ours;
+    not fixable from our side and inherited by any site embedding
+    YouTube.
+- Lighthouse (performance/accessibility/best-practices/SEO) on a
+  representative page per profile:
+  - `/` (text-heavy): 99 / 100 / 100 / 100
+  - `/gallery/live/` (image-heavy, 32 photos): 92 / 100 / 100 / 100
+  - `/videos/` (embed-heavy): was 60/100/96/100 with a 7.0s LCP and
+    1.9MB page weight from loading all 4 YouTube iframes at once -
+    fixed by converting `VideoEmbed.astro` to a click-to-load facade
+    (static `i.ytimg.com` poster thumbnail + play button; real iframe
+    only created on click, with a `<noscript>` fallback for no-JS).
+    Re-measured: 98 / 100 / 100 / 100, LCP 2.1s, page weight 196KB.
+    Verified by clicking through in Playwright that the real embed still
+    loads and autoplays correctly.
+- Full responsive screenshot pass (mobile 390px + desktop 1280px) across
+  every page not already spot-checked in earlier phases.
+
+### Launch (remaining)
+- Cut over Actions deploy to the new Astro output: switch
+  `.github/workflows/deploy-astro.yml` trigger from `workflow_dispatch`
+  to `push: branches: [main]`, switch the repo's Settings > Pages source
+  from "Deploy from a branch" to "GitHub Actions", merge `astro-rebuild`
+  into `main`, confirm CNAME/DNS still resolves post-cutover.
+- This is a live production change to the public site - do not perform
+  without explicit user go-ahead at the time of cutover.
 
 ## Working style note
 Work lands in small, committable increments (one phase or a few pages at a
