@@ -1,9 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import bellyDanceHero from '../assets/hero/belly-dance.jpg';
 ---
 
 <BaseLayout title="What is Belly Dance?" description="An introduction to bellydance: what it is, its technique, and its history.">
-	<h1>What is Belly Dance?</h1>
+	<PageHero slot="hero" image={bellyDanceHero} title="What is Belly Dance?" showTitle />
+
 	<p class="lede">And better yet, why is it difficult, and require years of study?</p>
 
 	<section class="section">

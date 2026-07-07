@@ -1,9 +1,12 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import millenniumHero from '../../assets/hero/classes-generic.jpg';
 ---
 
 <BaseLayout title="Millennium Dance Complex" description="Bellydance class details at Millennium Dance Complex in Nashville, TN.">
-	<h1>Millennium Dance Complex</h1>
+	<PageHero slot="hero" image={millenniumHero} title="Millennium Dance Complex" showTitle />
+
 	<p class="lede">Belly Dance Class</p>
 
 	<div class="class-info-grid">

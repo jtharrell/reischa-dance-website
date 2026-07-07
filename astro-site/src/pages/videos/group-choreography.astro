@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import VideoEmbed from '../../components/VideoEmbed.astro';
+import PageHero from '../../components/PageHero.astro';
+import videosHero from '../../assets/hero/videos.jpg';
 
 const videos = [
 	{ videoId: 'CwP2MPEUDFs', title: 'Zeina', caption: 'Vanderbilt Dance Concert. Choreography by Reischa.' },
@@ -11,7 +13,13 @@ const videos = [
 ---
 
 <BaseLayout title="Group Choreography Videos" description="Group choreography bellydance videos by Reischa, performed with the Vanderbilt Dance Program.">
-	<h1>Videos &mdash; Group Choreography</h1>
+	<PageHero
+		slot="hero"
+		image={videosHero}
+		title="Videos — Group Choreography"
+		imageAlt="Reischa in a teal beaded costume"
+	/>
+
 	<div class="video-grid">
 		{videos.map((video) => <VideoEmbed {...video} />)}
 	</div>

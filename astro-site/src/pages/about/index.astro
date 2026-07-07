@@ -1,9 +1,12 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import aboutHero from '../../assets/hero/about.jpg';
 ---
 
 <BaseLayout title="About" description="Reischa's biography as a professional bellydance performer, instructor, and choreographer in Nashville, TN.">
-	<h1>About Reischa</h1>
+	<PageHero slot="hero" image={aboutHero} title="About Reischa" showTitle />
+
 	<p class="lede">
 		Reischa is a professional Bellydance Performer, Instructor, and
 		Choreographer based in Nashville, Tennessee. She is known for her

@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import resumeHero from '../../assets/hero/classes-generic.jpg';
 
 const restaurantClub = [
 	['Bebo\'s Cafe', 'Special Guest Dancer'],
@@ -99,8 +101,9 @@ const teaching = [
 ---
 
 <BaseLayout title="Resume" description="Reischa Feuerbacher's professional performance, teaching, and choreography resume.">
+	<PageHero slot="hero" image={resumeHero} title="Resume for Reischa Feuerbacher" showTitle />
+
 	<div class="resume-header">
-		<h1>Resume for Reischa Feuerbacher</h1>
 		<p class="lede">Professional Oriental Dancer &amp; Instructor</p>
 	</div>
 

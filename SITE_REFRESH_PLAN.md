@@ -176,6 +176,52 @@ pages - no console errors.
 - This is a live production change to the public site - do not perform
   without explicit user go-ahead at the time of cutover.
 
+## Design rework - match the old site's look (done)
+After Phase 5 QA passed, Reischa felt the new site deviated too much from
+the old site's look. Root-caused to three things and fixed all three:
+
+1. **Homepage hero photo was missing.** Restored the actual old hero photo
+   (`Main_graphic_6-4-2014.jpg`, baked-in logo + tagline) as a full-width
+   banner.
+2. **Per-page background art was missing.** Every old page had a bespoke
+   background image (photo + ornate script title, or pure scrollwork
+   texture in the same purple family) that got dropped during rebuild.
+   Restored via a new `PageHero.astro` component that reuses the actual
+   old images, rendered as a full-width responsive banner (natural aspect
+   ratio, no cropping, `max-height: 70vh` safety cap for any future
+   portrait image). Two modes: `showTitle=false` (image already has a
+   baked-in title, e.g. ClassesBG/EventsBG/ContactBG/LinksBG/LiveBG/
+   StudioBG/VideoBG/BioBG - a visually-hidden real `<h1>` carries the
+   text for accessibility/SEO) or `showTitle=true` (a real `<h1>` in Alex
+   Brush script renders over the image, for textless generic images -
+   `ClassesBG2.jpg` reused across Attire/Millennium/both Vanderbilt pages/
+   Resume, `Belly_DanceBG.jpg` for What is Belly Dance, `BioBG2.jpg` -
+   Reischa's own newer, untracked bio photo - for About).
+   `Acting` and `Resume` had no original bespoke asset, so both reuse the
+   generic `ClassesBG2.jpg` texture (Acting's own headshots are portrait
+   orientation, unsuitable as a full-width banner - see the `max-height`
+   note above). `Gallery` index and `Contact/Thanks` intentionally have no
+   PageHero (each already has its own strong visual treatment).
+3. **Nav felt flat.** (Addressed via the header gradient background,
+   already part of the design system - no separate change needed here
+   since the ornate-photo banners now carry most of the "old look" job.)
+
+Also flipped the content section below each hero from a light card
+(dark-ink-on-white, Phase 1's original choice) to a deep-plum gradient
+with white/lavender text (`--color-content-bg`, `--color-content-heading`,
+`--color-content-muted`), matching the old site's actual purple-and-white
+mood far more closely while keeping strong contrast (~14:1 body text,
+still passes WCAG AA/AAA).
+
+Verified: full Playwright + axe-core crawl of all 20 pages after the
+rework - zero broken links, zero console errors, zero accessibility
+violations (one real one was caught and fixed: the hero banner sat
+outside any landmark region; moved it inside `<main>`). Lighthouse
+re-checked on the two heaviest pages (Home, About) post-rework: still
+99/100/100/100 with sub-2s LCP despite much heavier hero images -
+Astro's image pipeline handled it (e.g. the new About photo was a 12MB
+source JPEG, optimized down to 177KB).
+
 ## Working style note
 Work lands in small, committable increments (one phase or a few pages at a
 time) rather than one long uninterrupted pass, so progress is checkpointed

@@ -1,9 +1,11 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import attireHero from '../../assets/hero/classes-generic.jpg';
 ---
 
 <BaseLayout title="Recommended Attire" description="Recommended attire for bellydance and Spanish dance classes with Reischa.">
-	<h1>Recommended Attire</h1>
+	<PageHero slot="hero" image={attireHero} title="Recommended Attire" showTitle />
 
 	<section class="section">
 		<h2>Belly Dance</h2>

@@ -1,9 +1,16 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import classesHero from '../../assets/hero/classes.jpg';
 ---
 
 <BaseLayout title="Classes" description="Bellydance classes taught by Reischa in Nashville, TN, plus private lessons and special events.">
-	<h1>Classes</h1>
+	<PageHero
+		slot="hero"
+		image={classesHero}
+		title="Classes"
+		imageAlt="Reischa in a purple beaded costume, arching backward mid-pose"
+	/>
 
 	<section class="section">
 		<h2>Nashville Bellydance Class</h2>

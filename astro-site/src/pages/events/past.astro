@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import pastHero from '../../assets/hero/events-past.jpg';
 
 const columnOne = [
 	'The Nashville Ballet\'s production of "Scheherezade" (Tennessee Performing Arts Center / Nashville, TN.)',
@@ -38,7 +40,7 @@ const columnTwo = [
 ---
 
 <BaseLayout title="Notable Past Performances" description="A list of notable past bellydance performances by Reischa.">
-	<h1>Notable Past Performances</h1>
+	<PageHero slot="hero" image={pastHero} title="Notable Past Performances" />
 
 	<div class="link-grid link-grid--two">
 		<div>

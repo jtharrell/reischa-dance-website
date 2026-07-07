@@ -1,9 +1,12 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import vandyHero from '../../assets/hero/classes-generic.jpg';
 ---
 
 <BaseLayout title="Vanderbilt Flamenco (Archived)" description="Archived Vanderbilt Dance Program flamenco class listing.">
-	<h1>Vanderbilt Dance Program</h1>
+	<PageHero slot="hero" image={vandyHero} title="Vanderbilt Dance Program — Flamenco Class" showTitle />
+
 	<p class="lede">Flamenco Class</p>
 	<p><em>Archived listing from Reischa's time as a Vanderbilt Dance Program instructor.</em></p>
 

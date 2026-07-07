@@ -63,7 +63,10 @@ const navLinks = [
 		</header>
 
 		<main>
-			<slot />
+			<slot name="hero" />
+			<div class="content-wrapper">
+				<slot />
+			</div>
 		</main>
 
 		<footer class="site-footer">

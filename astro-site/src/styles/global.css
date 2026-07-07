@@ -17,6 +17,16 @@
 	--color-ink-soft: #6b4a5a;
 	--color-white: #ffffff;
 
+	/* Content sections sit on a deep plum gradient with light text, matching
+	   the old site's per-page background photos (ClassesBG/EventsBG/etc.)
+	   which were all this same purple family with white/lavender titles. */
+	--color-content-bg: #3a1f47;
+	--color-content-bg-soft: #4d2a5c;
+	--color-content-text: #f3e9f0;
+	--color-content-heading: #f2c9e0;
+	--color-content-muted: #cba7c4;
+	--color-content-border: rgb(255 255 255 / 15%);
+
 	--font-script: 'Alex Brush', cursive;
 	--font-heading: 'Playfair Display', Georgia, serif;
 	--font-body: 'Mulish', Arial, Helvetica, sans-serif;
@@ -173,12 +183,26 @@ a:hover {
 }
 
 main {
+	background: linear-gradient(180deg, var(--color-content-bg), var(--color-content-bg-soft));
+	color: var(--color-content-text);
+}
+
+main h1, main h2, main h3, main h4 {
+	color: var(--color-content-heading);
+}
+
+main a {
+	color: #fff;
+}
+
+main a:hover {
+	color: var(--color-content-heading);
+}
+
+.content-wrapper {
 	max-width: var(--content-max-width);
-	margin: 1.5rem auto 3rem;
-	padding: 1.75rem 1.5rem;
-	background: var(--color-surface);
-	border-radius: 12px;
-	box-shadow: 0 10px 30px rgb(122 31 69 / 12%);
+	margin: 0 auto;
+	padding: 2.5rem 1.5rem 3.5rem;
 }
 
 .site-footer {
@@ -214,19 +238,20 @@ main {
 
 .lede {
 	font-size: 1.1rem;
-	color: var(--color-ink-soft);
+	color: var(--color-content-muted);
 }
 
 .section + .section {
 	margin-top: 2rem;
 	padding-top: 2rem;
-	border-top: 1px solid rgb(122 31 69 / 12%);
+	border-top: 1px solid var(--color-content-border);
 }
 
 .back-link {
 	display: inline-block;
 	margin-top: 1.5rem;
 	font-weight: 600;
+	color: var(--color-lavender);
 }
 
 .sub-links {
@@ -243,8 +268,8 @@ main {
 }
 
 .info-box {
-	background: rgb(122 31 69 / 6%);
-	border: 1px solid rgb(122 31 69 / 15%);
+	background: rgb(255 255 255 / 8%);
+	border: 1px solid rgb(255 255 255 / 20%);
 	border-radius: 8px;
 	padding: 1.25rem;
 	margin-top: 1.5rem;
@@ -261,7 +286,7 @@ main {
 	font-size: 1.1rem;
 	text-transform: uppercase;
 	letter-spacing: 0.05em;
-	color: var(--color-mauve);
+	color: var(--color-lavender);
 	margin-bottom: 0.75rem;
 }
 
@@ -297,7 +322,7 @@ main {
 
 .resume-section h2 {
 	font-size: 1.2rem;
-	border-bottom: 1px solid rgb(122 31 69 / 15%);
+	border-bottom: 1px solid var(--color-content-border);
 	padding-bottom: 0.4rem;
 }
 
@@ -312,7 +337,7 @@ main {
 	flex-wrap: wrap;
 	gap: 0.25rem 1rem;
 	padding: 0.4rem 0;
-	border-bottom: 1px dashed rgb(122 31 69 / 15%);
+	border-bottom: 1px dashed var(--color-content-border);
 	font-size: 0.95rem;
 }
 
@@ -326,12 +351,12 @@ main {
 }
 
 .credit-role {
-	color: var(--color-ink-soft);
+	color: var(--color-content-muted);
 	flex: 1 1 12rem;
 }
 
 .credit-venue {
-	color: var(--color-mauve);
+	color: var(--color-lavender);
 	flex: 1 1 10rem;
 	text-align: right;
 }
@@ -357,7 +382,7 @@ main {
 
 .class-meta dt {
 	font-weight: 700;
-	color: var(--color-mauve);
+	color: var(--color-lavender);
 	margin-top: 1rem;
 }
 
@@ -389,7 +414,7 @@ main {
 
 form label {
 	font-weight: 600;
-	color: var(--color-mauve);
+	color: var(--color-lavender);
 }
 
 form input[type='text'],
@@ -401,7 +426,7 @@ form textarea {
 	padding: 0.6rem 0.75rem;
 	font-family: var(--font-body);
 	font-size: 1rem;
-	border: 1px solid rgb(122 31 69 / 25%);
+	border: 1px solid rgb(255 255 255 / 30%);
 	border-radius: 6px;
 	background: var(--color-white);
 	color: var(--color-ink);
@@ -423,17 +448,18 @@ form button {
 }
 
 form button[type='submit'] {
-	background: var(--color-maroon);
+	background: var(--color-mauve);
 	color: var(--color-white);
 }
 
 form button[type='submit']:hover {
-	background: var(--color-mauve);
+	background: var(--color-lavender);
+	color: var(--color-content-bg);
 }
 
 form button[type='reset'] {
 	background: transparent;
-	color: var(--color-ink-soft);
-	border: 1px solid rgb(122 31 69 / 25%);
+	color: var(--color-content-muted);
+	border: 1px solid rgb(255 255 255 / 30%);
 	margin-left: 0.5rem;
 }

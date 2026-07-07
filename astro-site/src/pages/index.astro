@@ -1,9 +1,17 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import homeHero from '../assets/hero/home.jpg';
 ---
 
 <BaseLayout title="Home">
-	<h1>Reischa Dance</h1>
+	<PageHero
+		slot="hero"
+		image={homeHero}
+		title="Reischa Bellydance"
+		imageAlt="Reischa Feuerbacher, a Nashville bellydance performer, in a purple beaded costume"
+	/>
+
 	<p>
 		Reischa is a Professional Belly Dance Artist in Nashville, TN. A
 		dedicated performer and teacher, she is internationally praised for her

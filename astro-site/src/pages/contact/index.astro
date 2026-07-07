@@ -1,9 +1,12 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import contactHero from '../../assets/hero/contact.jpg';
 ---
 
 <BaseLayout title="Contact" description="Contact Reischa about bellydance classes, bookings, and events.">
-	<h1>Contact</h1>
+	<PageHero slot="hero" image={contactHero} title="Contact" />
+
 	<p class="lede">
 		For comments or info about <a href="/classes/">Classes</a> or for
 		booking prices, send an e-mail or call:<br />

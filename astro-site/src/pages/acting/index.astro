@@ -1,9 +1,11 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import actingHero from '../../assets/hero/classes-generic.jpg';
 ---
 
 <BaseLayout title="Acting" description="Reischa's acting reel, resume, and casting profile links.">
-	<h1>Acting</h1>
+	<PageHero slot="hero" image={actingHero} title="Acting" showTitle />
 
 	<div class="acting-photos">
 		<img src="/images/acting/headshot.jpg" alt="Reischa headshot" />

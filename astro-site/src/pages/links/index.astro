@@ -1,9 +1,11 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import linksHero from '../../assets/hero/links.jpg';
 ---
 
 <BaseLayout title="Links" description="Bellydance links, research, and local resources curated by Reischa.">
-	<h1>Links</h1>
+	<PageHero slot="hero" image={linksHero} title="Links" />
 
 	<div class="link-grid">
 		<div>
