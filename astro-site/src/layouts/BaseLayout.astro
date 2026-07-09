@@ -40,8 +40,8 @@ const navLinks = [
 		<header class="site-header">
 			<div class="site-header__bar">
 				<a class="site-header__brand" href="/">
-					Reischa Bellydance
-					<span class="site-header__tagline">Belly Dancer &middot; Actress &middot; Flamenco Dancer</span>
+					Reischa
+					<span class="site-header__tagline">Belly Dancer &middot; Actress</span>
 				</a>
 				<button
 					class="nav-toggle"
@@ -52,14 +52,14 @@ const navLinks = [
 					<span class="sr-only">Menu</span>
 					<span class="nav-toggle__bars" aria-hidden="true"></span>
 				</button>
+				<nav class="primary-nav" id="primary-nav">
+					<ul>
+						{navLinks.map((link) => (
+							<li><a href={link.href}>{link.label}</a></li>
+						))}
+					</ul>
+				</nav>
 			</div>
-			<nav class="primary-nav" id="primary-nav">
-				<ul>
-					{navLinks.map((link) => (
-						<li><a href={link.href}>{link.label}</a></li>
-					))}
-				</ul>
-			</nav>
 		</header>
 
 		<main>
