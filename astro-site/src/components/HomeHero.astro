@@ -1,0 +1,113 @@
+---
+import { Image } from 'astro:assets';
+
+export interface Props {
+	image: ImageMetadata;
+	imageAlt?: string;
+}
+
+const { image, imageAlt = '' } = Astro.props;
+---
+
+<div class="home-hero">
+	<Image class="home-hero__image" src={image} alt={imageAlt} width={2000} format="webp" />
+	<div class="home-hero__scrim" aria-hidden="true"></div>
+	<div class="home-hero__panel">
+		<slot />
+	</div>
+</div>
+
+<style>
+	.home-hero {
+		position: relative;
+	}
+
+	.home-hero__image {
+		width: 100%;
+		height: auto;
+		display: block;
+	}
+
+	.home-hero__scrim {
+		display: none;
+	}
+
+	.home-hero__panel {
+		max-width: var(--content-max-width);
+		margin: 0 auto;
+		padding: 2rem 1.5rem 0.5rem;
+	}
+
+	.home-hero__panel :global(h1) {
+		font-family: var(--font-script);
+		font-size: clamp(2.5rem, 8vw, 3.5rem);
+		line-height: 1;
+		margin: 0 0 1rem;
+	}
+
+	@media (min-width: 56rem) {
+		.home-hero {
+			display: grid;
+			min-height: min(72vh, 44rem);
+		}
+
+		.home-hero__image,
+		.home-hero__scrim,
+		.home-hero__panel {
+			grid-area: 1 / 1;
+		}
+
+		.home-hero__image {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			object-position: 22% center;
+		}
+
+		.home-hero__scrim {
+			display: block;
+			background: linear-gradient(
+				100deg,
+				transparent 0%,
+				transparent 40%,
+				rgb(255 255 255 / 55%) 58%,
+				rgb(255 255 255 / 85%) 72%
+			);
+		}
+
+		.home-hero__panel {
+			position: relative;
+			z-index: 1;
+			max-width: none;
+			margin: 0;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: flex-end;
+			padding: 2rem clamp(1.5rem, 5vw, 4rem);
+		}
+
+		.home-hero__panel :global(> *) {
+			width: 100%;
+			max-width: 30rem;
+		}
+
+		.home-hero__panel :global(h1),
+		.home-hero__panel :global(p),
+		.home-hero__panel :global(li) {
+			color: var(--color-ink);
+		}
+
+		.home-hero__panel :global(h1) {
+			color: var(--color-maroon);
+		}
+
+		.home-hero__panel :global(a) {
+			color: var(--color-maroon);
+		}
+
+		.home-hero__panel :global(a:hover) {
+			color: var(--color-mauve);
+		}
+	}
+</style>

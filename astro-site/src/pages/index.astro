@@ -1,35 +1,35 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PageHero from '../components/PageHero.astro';
-import homeHero from '../assets/hero/home.jpg';
+import HomeHero from '../components/HomeHero.astro';
+import homeHero from '../assets/hero/reischa-w-veil.png';
 ---
 
 <BaseLayout title="Home">
-	<PageHero
+	<HomeHero
 		slot="hero"
 		image={homeHero}
-		title="Reischa Bellydance"
-		imageAlt="Reischa Feuerbacher, a Nashville bellydance performer, in a purple beaded costume"
-	/>
+		imageAlt="Reischa Feuerbacher, a Nashville bellydance performer, in a purple beaded costume, sweeping a purple veil"
+	>
+		<h1>Reischa Bellydance</h1>
+		<p>
+			Reischa is a Professional Belly Dance Artist in Nashville, TN. A
+			dedicated performer and teacher, she is internationally praised for her
+			artistic and authentic representation of Raks Sharki. Her enthusiastic
+			performances span many forms but reflect a strong focus on Egyptian
+			Classical and Folkloric stylization.
+		</p>
+		<p>
+			In addition to devoting her life to this dance form, she continues to
+			keep up her professional work and training in acting and music.
+		</p>
 
-	<p>
-		Reischa is a Professional Belly Dance Artist in Nashville, TN. A
-		dedicated performer and teacher, she is internationally praised for her
-		artistic and authentic representation of Raks Sharki. Her enthusiastic
-		performances span many forms but reflect a strong focus on Egyptian
-		Classical and Folkloric stylization.
-	</p>
-	<p>
-		In addition to devoting her life to this dance form, she continues to
-		keep up her professional work and training in acting and music.
-	</p>
+		<p><strong>More on the artist...</strong></p>
+		<ul>
+			<li><strong>Served as Belly Dance instructor at Vanderbilt University for 12 years.</strong></li>
+			<li><strong>A most sought after Belly Dancer within Nashville's Middle Eastern Community since 2004.</strong></li>
+			<li><strong>Guest dancer at many weddings, engagement parties, and other special events.</strong></li>
+		</ul>
 
-	<p><strong>More on the artist...</strong></p>
-	<ul>
-		<li><strong>Served as Belly Dance instructor at Vanderbilt University for 12 years.</strong></li>
-		<li><strong>A most sought after Belly Dancer within Nashville's Middle Eastern Community since 2004.</strong></li>
-		<li><strong>Guest dancer at many weddings, engagement parties, and other special events.</strong></li>
-	</ul>
-
-	<a class="back-link" href="/what-is-belly-dance/">What is Belly Dance? &rarr;</a>
+		<a class="back-link" href="/what-is-belly-dance/">What is Belly Dance? &rarr;</a>
+	</HomeHero>
 </BaseLayout>
