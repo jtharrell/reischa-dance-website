@@ -80,10 +80,8 @@ a:hover {
 
 .site-header {
 	position: relative;
-	/* Both stops keep white nav text at >= 4.5:1 contrast (WCAG AA) -
-	   color-mauve-light is reserved for decorative/hover use only, never
-	   as a background under white text. */
-	background: linear-gradient(135deg, var(--color-maroon-dark), var(--color-mauve));
+	/* #9c1955 keeps white nav text at ~7.8:1 contrast (WCAG AA). */
+	background: #9c1955;
 }
 
 .site-header__bar {

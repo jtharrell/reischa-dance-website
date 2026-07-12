@@ -82,14 +82,14 @@ const { image, imageAlt = '' } = Astro.props;
 			margin: 0;
 			display: flex;
 			flex-direction: column;
-			justify-content: center;
+			justify-content: flex-start;
 			align-items: flex-end;
 			padding: 2rem clamp(1.5rem, 5vw, 4rem);
 		}
 
 		.home-hero__panel :global(> *) {
 			width: 100%;
-			max-width: 34.5rem;
+			max-width: calc(34.5rem + 20%);
 		}
 
 		.home-hero__panel :global(h1),
@@ -108,6 +108,10 @@ const { image, imageAlt = '' } = Astro.props;
 
 		.home-hero__panel :global(a:hover) {
 			color: var(--color-mauve);
+		}
+
+		.home-hero__panel :global(.back-link) {
+			text-align: center;
 		}
 	}
 </style>
