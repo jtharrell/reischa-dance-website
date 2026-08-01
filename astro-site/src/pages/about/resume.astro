@@ -1,7 +1,7 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import PageHero from '../../components/PageHero.astro';
-import resumeHero from '../../assets/hero/classes-generic.jpg';
+import veilPhoto from '../../assets/hero/reischa-w-veil-2.JPG';
 
 const restaurantClub = [
 	['Bebo\'s Cafe', 'Special Guest Dancer'],
@@ -39,7 +39,7 @@ const theatreConcert = [
 ];
 
 const filmVideo = [
-	['Mid-day News', 'Interviewee / Vanderbilt Dance Program', 'NBC Channel 4'],
+	['Mid-day News', 'Demo / Vanderbilt Dance Program', 'NBC Channel 4'],
 	['Labyrinthe Belly Dance Company', 'Dance Company & Solo', 'Speers Productions'],
 	['Labyrinthe Video', 'Dance Company & Solo', 'Hi-Five Productions'],
 	['Religions of Small Societies', 'Goddess / Dancer', 'Green Star Productions'],
@@ -62,8 +62,8 @@ const festivals = [
 ];
 
 const choreography = [
-	['Vanderbilt Ingram Hall', 'Vanderbilt Dance Concerts (Choreographer)'],
-	['Middle TN State Univ.', 'Tales of Arabian Nights (Choreographer)'],
+	['Vanderbilt Ingram Hall', 'Vanderbilt Dance Concerts'],
+	['Middle TN State Univ.', 'Tales of Arabian Nights'],
 ];
 
 const education = [
@@ -101,19 +101,20 @@ const teaching = [
 ---
 
 <BaseLayout title="Resume" description="Reischa Feuerbacher's professional performance, teaching, and choreography resume.">
-	<PageHero slot="hero" image={resumeHero} title="Resume for Reischa Feuerbacher" showTitle />
-
+	<div class="resume-page">
 	<div class="resume-header">
+		<h1>Reischa's Resume</h1>
 		<p class="lede">Professional Oriental Dancer &amp; Instructor</p>
 	</div>
 
-	<section class="resume-section">
+	<section class="resume-section performance-section">
 		<h2>Performance Experience &mdash; Restaurant &amp; Club</h2>
 		<ul class="credit-list">
 			{restaurantClub.map(([venue, role]) => (
-				<li><span class="credit-title">{venue}</span><span class="credit-role">{role}</span></li>
+				<li><span class="credit-title">{venue}</span><span class="credit-role">{role}</span><span class="credit-venue"></span></li>
 			))}
 		</ul>
+		<Image class="performance-photo" src={veilPhoto} alt="Reischa dancing with a purple veil" width={400} format="webp" />
 	</section>
 
 	<section class="resume-section">
@@ -147,7 +148,7 @@ const teaching = [
 		<h2>Choreography Work</h2>
 		<ul class="credit-list">
 			{choreography.map(([venue, project]) => (
-				<li><span class="credit-title">{venue}</span><span class="credit-role">{project}</span></li>
+				<li><span class="credit-title">{venue}</span><span class="credit-role">{project}<br />(Choreographer)</span><span class="credit-venue"></span></li>
 			))}
 		</ul>
 	</section>
@@ -210,4 +211,82 @@ const teaching = [
 	</section>
 
 	<a class="back-link" href="/about/">&larr; Back to About</a>
+	</div>
 </BaseLayout>
+
+<style>
+	:global(main:has(.resume-page)) {
+		background: var(--color-surface);
+		color: var(--color-ink);
+	}
+
+	:global(main:has(.resume-page) h1),
+	:global(main:has(.resume-page) h2) {
+		color: var(--color-maroon);
+	}
+
+	:global(main:has(.resume-page) h1) {
+		font-family: var(--font-script);
+		font-size: clamp(2.5rem, 8vw, 3.5rem);
+		line-height: 1;
+		margin: 0 0 0.5rem;
+	}
+
+	:global(main:has(.resume-page) a) {
+		color: var(--color-maroon);
+	}
+
+	:global(main:has(.resume-page) a:hover) {
+		color: var(--color-mauve);
+	}
+
+	:global(main:has(.resume-page) .lede) {
+		color: var(--color-ink-soft);
+	}
+
+	:global(main:has(.resume-page) .resume-header) {
+		border-bottom-color: var(--color-mauve-light);
+	}
+
+	:global(main:has(.resume-page) .resume-section h2) {
+		border-bottom-color: rgb(58 36 48 / 15%);
+	}
+
+	:global(main:has(.resume-page) .credit-list li) {
+		border-bottom-color: rgb(58 36 48 / 15%);
+	}
+
+	:global(main:has(.resume-page) .credit-role) {
+		color: var(--color-ink-soft);
+	}
+
+	:global(main:has(.resume-page) .credit-venue) {
+		color: var(--color-mauve);
+	}
+
+	.performance-section {
+		position: relative;
+	}
+
+	.performance-photo {
+		display: block;
+		width: 100%;
+		height: auto;
+		margin-top: 1.5rem;
+		border-radius: 0.5rem;
+	}
+
+	@media (min-width: 48rem) {
+		.performance-photo {
+			position: absolute;
+			top: 2.75rem;
+			right: 0;
+			bottom: 0;
+			width: 14rem;
+			height: auto;
+			margin-top: 0;
+			object-fit: cover;
+			object-position: top center;
+		}
+	}
+</style>
