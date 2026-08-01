@@ -1,53 +1,51 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import PageHero from '../../components/PageHero.astro';
+import HomeHero from '../../components/HomeHero.astro';
 import classesHero from '../../assets/hero/classes.jpg';
 ---
 
 <BaseLayout title="Classes" description="Bellydance classes taught by Reischa in Nashville, TN, plus private lessons and special events.">
-	<PageHero
+	<HomeHero
 		slot="hero"
 		image={classesHero}
-		title="Classes"
 		imageAlt="Reischa in a purple beaded costume, arching backward mid-pose"
-	/>
-
-	<section class="section">
-		<h2>Nashville Bellydance Class</h2>
+		imageWidth="44rem"
+		panelMaxWidth="26rem"
+	>
+		<h1>Classes</h1>
 		<p>
-			<a href="/classes/millennium/"><strong>@ Millennium Dance Complex</strong></a>
+			Reischa teaches bellydance in Nashville, TN, offering group classes,
+			private lessons, and instruction for special events.
+		</p>
+
+		<p><strong>Nashville Bellydance Class</strong></p>
+		<p>
+			<a href="/classes/millennium/">@ Millennium Dance Complex</a>
 		</p>
 		<p>
 			<a href="/classes/millennium/">Upcoming Group Class</a><br />
 			May 24 (4:00 PM &ndash; 5:00 PM)
 		</p>
 		<p>
-			Some class updates can be found on
-			<a href="https://www.facebook.com/profile.php?id=61579200180746" target="_blank" rel="noopener noreferrer">this Facebook page</a>.
+			Some class updates can be found on <a href="https://www.facebook.com/profile.php?id=61579200180746" target="_blank" rel="noopener noreferrer">this Facebook page</a>.
 		</p>
-	</section>
 
-	<section class="section info-box">
-		<h2>Private Classes &amp; Special Events</h2>
+		<p><strong>Private Classes &amp; Special Events</strong></p>
 		<p>
-			<strong>Planning an event?</strong><br />
-			Reischa is available to teach at parties and private classes.
+			Planning an event? Reischa is available to teach at parties and
+			private classes.
 		</p>
-	</section>
 
-	<section class="section">
-		<h2>Past Vanderbilt Dance Program Classes</h2>
-		<p class="lede">
+		<p><strong>Past Vanderbilt Dance Program Classes</strong></p>
+		<p>
 			Reischa taught bellydance and flamenco at Vanderbilt University for
 			12 years. Those class listings are kept below for reference.
 		</p>
-		<ul class="sub-links">
+		<ul>
 			<li><a href="/classes/vanderbilt-bellydance/">Vanderbilt Bellydance (archived)</a></li>
 			<li><a href="/classes/vanderbilt-flamenco/">Vanderbilt Flamenco (archived)</a></li>
 		</ul>
-	</section>
 
-	<ul class="sub-links">
-		<li><a href="/classes/attire/">Recommended Attire</a></li>
-	</ul>
+		<a class="back-link" href="/classes/attire/">Recommended Attire &rarr;</a>
+	</HomeHero>
 </BaseLayout>
