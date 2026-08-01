@@ -8,6 +8,7 @@ export interface Props {
 	panelMaxWidth?: string;
 	imageWidth?: string;
 	panelAlign?: 'end' | 'center';
+	panelVerticalAlign?: 'start' | 'center';
 }
 
 const {
@@ -17,6 +18,7 @@ const {
 	panelMaxWidth = 'calc(34.5rem + 20%)',
 	imageWidth,
 	panelAlign = 'end',
+	panelVerticalAlign = 'center',
 } = Astro.props;
 
 const capped = Boolean(imageWidth);
@@ -28,7 +30,13 @@ const capped = Boolean(imageWidth);
 >
 	<Image class="home-hero__image" src={image} alt={imageAlt} width={2000} format="webp" />
 	<div class="home-hero__scrim" aria-hidden="true"></div>
-	<div class:list={['home-hero__panel', { 'home-hero__panel--center': panelAlign === 'center' }]}>
+	<div
+		class:list={[
+			'home-hero__panel',
+			{ 'home-hero__panel--center': panelAlign === 'center' },
+			{ 'home-hero__panel--top': panelVerticalAlign === 'start' },
+		]}
+	>
 		<slot />
 	</div>
 </div>
@@ -171,6 +179,10 @@ const capped = Boolean(imageWidth);
 			align-items: flex-start;
 			justify-content: center;
 			padding: 2rem clamp(1.5rem, 5vw, 4rem) 2rem 0;
+		}
+
+		.home-hero--capped .home-hero__panel--top {
+			justify-content: flex-start;
 		}
 	}
 </style>
