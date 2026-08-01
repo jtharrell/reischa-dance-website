@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import PageHero from '../../components/PageHero.astro';
-import pastHero from '../../assets/hero/events-past.jpg';
+import HomeHero from '../../components/HomeHero.astro';
+import pastHero from '../../assets/hero/belly-dance.jpg';
 
 const columnOne = [
 	'The Nashville Ballet\'s production of "Scheherezade" (Tennessee Performing Arts Center / Nashville, TN.)',
@@ -40,20 +40,26 @@ const columnTwo = [
 ---
 
 <BaseLayout title="Notable Past Performances" description="A list of notable past bellydance performances by Reischa.">
-	<PageHero slot="hero" image={pastHero} title="Notable Past Performances" />
+	<HomeHero
+		slot="hero"
+		image={pastHero}
+		imageAlt="Reischa in a purple beaded costume, sweeping a purple veil"
+	>
+		<h1>Notable Past Performances</h1>
 
-	<div class="link-grid link-grid--two">
-		<div>
-			<ul>
-				{columnOne.map((item) => <li>{item}</li>)}
-			</ul>
+		<div class="link-grid link-grid--two">
+			<div>
+				<ul>
+					{columnOne.map((item) => <li>{item}</li>)}
+				</ul>
+			</div>
+			<div>
+				<ul>
+					{columnTwo.map((item) => <li>{item}</li>)}
+				</ul>
+			</div>
 		</div>
-		<div>
-			<ul>
-				{columnTwo.map((item) => <li>{item}</li>)}
-			</ul>
-		</div>
-	</div>
 
-	<a class="back-link" href="/events/">&larr; Back to Events</a>
+		<a class="back-link" href="/events/">&larr; Back to Events</a>
+	</HomeHero>
 </BaseLayout>

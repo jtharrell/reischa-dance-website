@@ -7,6 +7,7 @@ export interface Props {
 	imagePosition?: string;
 	panelMaxWidth?: string;
 	imageWidth?: string;
+	panelAlign?: 'end' | 'center';
 }
 
 const {
@@ -15,6 +16,7 @@ const {
 	imagePosition = '22% center',
 	panelMaxWidth = 'calc(34.5rem + 20%)',
 	imageWidth,
+	panelAlign = 'end',
 } = Astro.props;
 
 const capped = Boolean(imageWidth);
@@ -26,7 +28,7 @@ const capped = Boolean(imageWidth);
 >
 	<Image class="home-hero__image" src={image} alt={imageAlt} width={2000} format="webp" />
 	<div class="home-hero__scrim" aria-hidden="true"></div>
-	<div class="home-hero__panel">
+	<div class:list={['home-hero__panel', { 'home-hero__panel--center': panelAlign === 'center' }]}>
 		<slot />
 	</div>
 </div>
@@ -57,6 +59,10 @@ const capped = Boolean(imageWidth);
 		font-size: clamp(2.5rem, 8vw, 3.5rem);
 		line-height: 1;
 		margin: 0 0 1rem;
+	}
+
+	.home-hero__panel--center {
+		text-align: center;
 	}
 
 	@media (min-width: 56rem) {
@@ -107,12 +113,14 @@ const capped = Boolean(imageWidth);
 		}
 
 		.home-hero__panel :global(h1),
+		.home-hero__panel :global(h2),
 		.home-hero__panel :global(p),
 		.home-hero__panel :global(li) {
 			color: var(--color-ink);
 		}
 
-		.home-hero__panel :global(h1) {
+		.home-hero__panel :global(h1),
+		.home-hero__panel :global(h2) {
 			color: var(--color-maroon);
 		}
 
@@ -125,6 +133,11 @@ const capped = Boolean(imageWidth);
 		}
 
 		.home-hero__panel :global(.back-link) {
+			text-align: center;
+		}
+
+		.home-hero__panel--center {
+			align-items: center;
 			text-align: center;
 		}
 

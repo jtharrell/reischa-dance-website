@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import VideoEmbed from '../../components/VideoEmbed.astro';
-import PageHero from '../../components/PageHero.astro';
+import SplitBioLayout from '../../components/SplitBioLayout.astro';
 import videosHero from '../../assets/hero/videos.jpg';
 
 const videos = [
@@ -13,17 +13,16 @@ const videos = [
 ---
 
 <BaseLayout title="Videos" description="Solo bellydance performance videos by Reischa.">
-	<PageHero
-		slot="hero"
+	<SplitBioLayout
 		image={videosHero}
-		title="Videos — Solo Dances"
 		imageAlt="Reischa in a teal beaded costume"
-	/>
-
-	<div class="video-grid">
-		{videos.map((video) => <VideoEmbed {...video} />)}
-	</div>
-	<a class="back-link" href="/videos/group-choreography/">Group Choreography &rarr;</a>
+		title="Videos — Solo Dances"
+	>
+		<div class="video-grid">
+			{videos.map((video) => <VideoEmbed {...video} />)}
+		</div>
+		<a class="back-link" href="/videos/group-choreography/">Group Choreography &rarr;</a>
+	</SplitBioLayout>
 </BaseLayout>
 
 <style>

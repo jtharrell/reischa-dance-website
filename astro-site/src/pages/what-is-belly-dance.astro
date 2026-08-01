@@ -1,15 +1,18 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PageHero from '../components/PageHero.astro';
+import HomeHero from '../components/HomeHero.astro';
 import bellyDanceHero from '../assets/hero/belly-dance.jpg';
 ---
 
 <BaseLayout title="What is Belly Dance?" description="An introduction to bellydance: what it is, its technique, and its history.">
-	<PageHero slot="hero" image={bellyDanceHero} title="What is Belly Dance?" showTitle />
+	<HomeHero
+		slot="hero"
+		image={bellyDanceHero}
+		imageAlt="Reischa in a purple beaded costume, sweeping a purple veil"
+	>
+		<h1>What is Belly Dance?</h1>
+		<p>And better yet, why is it difficult, and require years of study?</p>
 
-	<p class="lede">And better yet, why is it difficult, and require years of study?</p>
-
-	<section class="section">
 		<ul>
 			<li>
 				This dance form has been misunderstood as something offensive,
@@ -25,9 +28,7 @@ import bellyDanceHero from '../assets/hero/belly-dance.jpg';
 				dance is actually known as Oriental Dance or Raks Sharki.
 			</li>
 		</ul>
-	</section>
 
-	<section class="section">
 		<h2>Technically</h2>
 		<ul>
 			<li>
@@ -44,9 +45,7 @@ import bellyDanceHero from '../assets/hero/belly-dance.jpg';
 				able to improvise, which is no easy task.
 			</li>
 		</ul>
-	</section>
 
-	<section class="section">
 		<h2>History</h2>
 		<ul>
 			<li>Belly dance is the world's oldest dance form.</li>
@@ -63,7 +62,7 @@ import bellyDanceHero from '../assets/hero/belly-dance.jpg';
 			The study and coordination of movement, music, and culture work
 			together and require much research and practice.
 		</p>
-	</section>
 
-	<a class="back-link" href="/">&larr; Back Home</a>
+		<a class="back-link" href="/">&larr; Back Home</a>
+	</HomeHero>
 </BaseLayout>

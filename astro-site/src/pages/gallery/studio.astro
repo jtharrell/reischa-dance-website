@@ -1,8 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import GalleryGrid from '../../components/GalleryGrid.astro';
-import PageHero from '../../components/PageHero.astro';
-import studioHero from '../../assets/hero/studio.jpg';
+import HomeHero from '../../components/HomeHero.astro';
+import studioHero from '../../assets/hero/belly-dance.jpg';
 
 const imageModules = import.meta.glob<{ default: ImageMetadata }>('/src/assets/gallery/studio/*.jpg', { eager: true });
 const images = Object.keys(imageModules)
@@ -11,8 +11,15 @@ const images = Object.keys(imageModules)
 ---
 
 <BaseLayout title="Studio Photos" description="Studio photos of Reischa bellydancing.">
-	<PageHero slot="hero" image={studioHero} title="Studio Photos" />
-
-	<GalleryGrid images={images} altPrefix="Reischa studio photo" />
-	<a class="back-link" href="/gallery/">&larr; Back to Gallery</a>
+	<HomeHero
+		slot="hero"
+		image={studioHero}
+		imageAlt="Reischa in a purple beaded costume, sweeping a purple veil"
+		panelMaxWidth="60rem"
+		panelAlign="center"
+	>
+		<h1>Studio Photos</h1>
+		<GalleryGrid images={images} altPrefix="Reischa studio photo" />
+		<a class="back-link" href="/gallery/">&larr; Back to Gallery</a>
+	</HomeHero>
 </BaseLayout>
