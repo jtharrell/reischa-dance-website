@@ -1,95 +1,95 @@
 ---
-import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import SplitBioLayout from '../../components/SplitBioLayout.astro';
 import performancePhoto from '../../assets/hero/reischa-in-red.jpg';
 
 const restaurantClub = [
 	['Bebo\'s Cafe', 'Special Guest Dancer'],
-	['Memories Hookah Bar and Restaurant', 'Regularly Featured Dancer'],
+	['Memories Hookah Bar', 'Featured Dancer'],
 	['Yanni\'s Greek Taverna', 'Featured Dancer'],
 	['Tabouli\'s Restaurant', 'Featured Dancer'],
 	['Fattoush Cafe', 'Featured Dancer'],
 	['Parisa\'s Restaurant', 'Featured Dancer'],
 	['Funkoush Middle Eastern Cafe', 'Featured Dancer'],
-	['Mediterranean Cuisine Restaurant', 'Soloist for select shows with Live Band'],
-	['Istanbul Restaurant', 'Soloist for select shows with Live Band'],
-	['Nirwa Restaurant', 'Soloist for select shows with Live Band'],
-	['Marriot Banquet Hall', 'Soloist for select shows with Live Band'],
-	['Sunrise Banquet Hall', 'Soloist for select shows with Live Band'],
+	['Mediterranean Cuisine', 'Soloist with Live Band'],
+	['Istanbul Restaurant', 'Soloist with Live Band'],
+	['Nirwa Restaurant', 'Soloist with Live Band'],
+	['Marriot Banquet Hall', 'Soloist with Live Band'],
+	['Sunrise Banquet Hall', 'Soloist with Live Band'],
 	['Various Ethnic Weddings', 'Featured Dancer'],
-	['French Quarter', 'Soloist for select shows with Live Band'],
-	['Planet Hollywood', 'Soloist for select shows with Live Band'],
-	['Roscoe\'s Coffee House', 'Soloist for select shows with Live Band'],
-	['Govann\'s Coffee House', 'Soloist for select shows with Live Band'],
+	['French Quarter', 'Soloist with Live Band'],
+	['Planet Hollywood', 'Soloist with Live Band'],
+	['Roscoe\'s Coffee House', 'Soloist with Live Band'],
+	['Govann\'s Coffee House', 'Soloist with Live Band'],
 ];
 
 const theatreConcert = [
-	['Nashville Ballet\'s Scheherazade', 'Dance Company & Solo', 'TN Performing Arts Center'],
+	['Nashville Ballet\'s Scheherazade', 'Dance Company & Solo', 'TPAC'],
 	['Drachenburg Folklore Show', 'Dancer / Choreographer', 'Factory of Franklin'],
 	['La Colmena Dance Concert', 'Dancer / Choreographer', 'Donelson Arts Center'],
-	['Vanderbilt Dance Concert/s 05 - 08', 'Dancer / Choreographer', 'Vanderbilt Ingram Hall'],
-	['Labyrinthe Belly dance Concert', 'Dancer / Choreographer', 'Dark Horse Theatre'],
-	['Labyrinthe Belly dance Concert/s', 'Dancer / Choreographer', 'Main Street Theater'],
-	['Ideaprov Theater Shows', 'Dancer / Improv Actor', 'Bar Car'],
-	['Ideaprov Theater Shows', 'Dance Company & Solo', 'Mercy Lounge'],
+	['Vanderbilt Dance Concerts', 'Dancer / Choreographer', 'Vanderbilt Ingram Hall'],
+	['Labyrinthe Concert', 'Dancer / Choreographer', 'Dark Horse Theatre'],
+	['Labyrinthe Concerts', 'Dancer / Choreographer', 'Main Street Theater'],
+	['Ideaprov Theater', 'Dancer / Improv Actor', 'Bar Car'],
+	['Ideaprov Theater', 'Dance Company & Solo', 'Mercy Lounge'],
 	['Tsunami Benefit Show', 'Dance Company & Solo', 'Dark Horse Theater'],
 	['Tsunami Benefit Show', 'Dance Company & Solo', 'MTSU Tucker Theater'],
-	['American Cancer Society Benefit', 'Dance Company & Solo', 'Vol. State College Theater'],
-	['Old Time Family Theater Show', 'Dance Company & Solo', 'Opry Mills Mall'],
+	['Cancer Society Benefit', 'Dance Company & Solo', 'Vol. State'],
+	['Old Time Family', 'Dance Company & Solo', 'Opry Mills Mall'],
 ];
 
 const filmVideo = [
-	['Mid-day News', 'Demo / Vanderbilt Dance Program', 'NBC Channel 4'],
-	['Labyrinthe Belly Dance Company', 'Dance Company & Solo', 'Speers Productions'],
+	['Mid-day News', 'Demo / Vanderbilt Dance', 'NBC Channel 4'],
+	['Labyrinthe', 'Dance Company & Solo', 'Speers Productions'],
 	['Labyrinthe Video', 'Dance Company & Solo', 'Hi-Five Productions'],
-	['Religions of Small Societies', 'Goddess / Dancer', 'Green Star Productions'],
+	['Religions of Small Societies', 'Goddess / Dancer', 'Green Star'],
 ];
 
 const festivals = [
-	['Pensacola Renaissance Festival', 'Dancer / Choreographer', 'Pensacola, FL'],
+	['Pensacola Ren. Festival', 'Dancer / Choreographer', 'Pensacola, FL'],
 	['Hypericon Convention', 'Dancer / Choreographer', 'Nashville, TN'],
-	['Mobile Renaissance', 'Dancer / Choreographer', 'Mobile, AL'],
-	['Rogersville Renaissance Festival', 'Dancer / Choreographer', 'Rogersville, TN'],
+	['Mobile Ren. Festival', 'Dancer / Choreographer', 'Mobile, AL'],
+	['Rogersville Ren. Festival', 'Dancer / Choreographer', 'Rogersville, TN'],
 	['Essential Living Festival/s', 'Dancer / Choreographer', 'Nashville, TN'],
 	['Figures of Nashville', 'Choreographer', 'Nashville, TN'],
-	['Michigan Renaissance Festival', 'Dancer / Choreographer', 'Holly, MI'],
-	['Asheville Renaissance Festival', 'Dancer / Choreographer', 'Asheville, NC'],
-	['Tennessee Renaissance Festival', 'Dancer / Choreographer', 'Triune, TN'],
-	['Nashville Dream Halftime Show', 'Dancer / Choreographer', 'Nashville, TN'],
+	['Michigan Ren. Festival', 'Dancer / Choreographer', 'Holly, MI'],
+	['Asheville Ren. Festival', 'Dancer / Choreographer', 'Asheville, NC'],
+	['Tennessee Ren. Festival', 'Dancer / Choreographer', 'Triune, TN'],
+	['Nashville Dream Halftime', 'Dancer / Choreographer', 'Nashville, TN'],
 	['Bastille Day Festival', 'Dance Company & Solo', 'Nashville, TN'],
-	['People\'s Branch Theater Benefit', 'Featured Dancer', 'Nashville, TN'],
-	['Zootopia (Nashville Zoo Benefit)', 'Dance Company & Solo', 'Nashville, TN'],
+	['People\'s Branch Theater', 'Featured Dancer', 'Nashville, TN'],
+	['Zootopia (Nashville Zoo)', 'Dance Company & Solo', 'Nashville, TN'],
 ];
 
 const choreography = [
-	['Vanderbilt Ingram Hall', 'Vanderbilt Dance Concerts'],
-	['Middle TN State Univ.', 'Tales of Arabian Nights'],
+	['Vanderbilt Dance Concerts', 'Choreographer', 'Vanderbilt Ingram Hall'],
+	['Tales of Arabian Nights', 'Choreographer', 'MTSU'],
 ];
 
 const education = [
 	['Oriental Technique', 'Laylia White', 'Private Instruction'],
 	['Stylization', 'Aziza', 'Workshops'],
 	['Beginning Oriental', 'Jeanine Rabbit', 'Private Instruction'],
-	['Turkish Stylization & Technique', 'Hakan Kaya', 'Workshop'],
-	['Spanish Classical & Flamenco', 'Lynn Salomon', 'Ongoing Private Instruction'],
+	['Turkish Technique', 'Hakan Kaya', 'Workshop'],
+	['Spanish Classical & Flamenco', 'Lynn Salomon', 'Private Instruction'],
 	['Spanish Classical & Flamenco', 'Nancy Cedwick', 'Workshops'],
 	['Flamenco', '(Dame) Marina Lorca', 'Workshops'],
 	['Flamenco', 'Martha Sidahmed', 'Workshops'],
-	['Oriental Technique', 'Suhaila Salimpour', 'Ongoing Study'],
+	['Oriental Technique', 'Suhaila Salimpour', 'Study'],
 	['Jamilla Salimpour Technique', 'Jamilla Salimpour', 'Workshops'],
 	['Jazz Technique', 'Stacey Beck', 'Group Instruction'],
 	['Tap Technique', 'Stacey Beck', 'Group Instruction'],
-	['Jazz Technique', 'Angela Armstrong', 'MTSU Group Instruction'],
-	['Ballet', 'Bethel World Outreach', 'Extensive Group Instruction'],
-	['Egyptian Stylization & Technique', 'Ellie Hurgeton', 'Private Instruction'],
-	['Egyptian Stylization', 'Travis Jarrell', 'Workshops'],
+	['Jazz Technique', 'Angela Armstrong', 'MTSU Group Class'],
+	['Ballet', 'Bethel World Outreach', 'Extensive Group Class'],
+	['Egyptian Technique', 'Ellie Hurgeton', 'Private Instruction'],
+	['Egyptian Technique', 'Travis Jarrell', 'Workshops'],
 ];
 
 const teaching = [
 	['Oriental Technique (Beg / Int.)', 'La Colmena Studio', 'Private & Group'],
 	['Oriental Technique (Beg / Int.)', 'Centennial Park Center', 'Group Instruction'],
-	['Oriental Technique (Beg / Int.)', 'Vanderbilt University Dance Program', 'Group Instruction'],
-	['Oriental Technique (Beg / Int.)', 'Rising Sun Karate & Fitness', 'Group Instruction'],
+	['Oriental Technique (Beg / Int.)', 'Vanderbilt Dance Program', 'Group Instruction'],
+	['Oriental Technique (Beg / Int.)', 'Rising Sun Karate', 'Group Instruction'],
 	['Master Classes', 'VDP Summer Intensive', 'Group Instruction'],
 	['Oriental Technique', 'Julie\'s School of Dance', 'Group Instruction'],
 	['Oriental Technique', 'Donelson Arts Center', 'Group Instruction'],
@@ -101,192 +101,115 @@ const teaching = [
 ---
 
 <BaseLayout title="Resume" description="Reischa Feuerbacher's professional performance, teaching, and choreography resume.">
-	<div class="resume-page">
-	<div class="resume-header">
-		<h1>Reischa's Resume</h1>
+	<SplitBioLayout
+		image={performancePhoto}
+		imageAlt="Reischa performing in a red dance costume"
+		title="Reischa's Resume"
+		mediaFraction={0.3}
+		mediaHeight="46.75rem"
+	>
 		<p class="lede">Professional Oriental Dancer &amp; Instructor</p>
-	</div>
 
-	<section class="resume-section performance-section">
-		<h2>Performance Experience &mdash; Restaurant &amp; Club</h2>
-		<ul class="credit-list">
-			{restaurantClub.map(([venue, role]) => (
-				<li><span class="credit-title">{venue}</span><span class="credit-role">{role}</span><span class="credit-venue"></span></li>
-			))}
-		</ul>
-		<Image class="performance-photo" src={performancePhoto} alt="Reischa performing in a red dance costume" width={400} format="webp" />
-	</section>
+		<section class="resume-section">
+			<h2>Performance Experience &mdash; Restaurant &amp; Club</h2>
+			<ul class="credit-list">
+				{restaurantClub.map(([venue, role]) => (
+					<li><span class="credit-title">{venue}</span><span class="credit-role">{role}</span><span class="credit-venue"></span></li>
+				))}
+			</ul>
+		</section>
 
-	<section class="resume-section">
-		<h2>Theatre / Concert</h2>
-		<ul class="credit-list">
-			{theatreConcert.map(([title, role, venue]) => (
-				<li><span class="credit-title">{title}</span><span class="credit-role">{role}</span><span class="credit-venue">{venue}</span></li>
-			))}
-		</ul>
-	</section>
+		<section class="resume-section">
+			<h2>Theatre / Concert</h2>
+			<ul class="credit-list">
+				{theatreConcert.map(([title, role, venue]) => (
+					<li><span class="credit-title">{title}</span><span class="credit-role">{role}</span><span class="credit-venue">{venue}</span></li>
+				))}
+			</ul>
+		</section>
 
-	<section class="resume-section">
-		<h2>Film / Video</h2>
-		<ul class="credit-list">
-			{filmVideo.map(([title, role, venue]) => (
-				<li><span class="credit-title">{title}</span><span class="credit-role">{role}</span><span class="credit-venue">{venue}</span></li>
-			))}
-		</ul>
-	</section>
+		<section class="resume-section">
+			<h2>Film / Video</h2>
+			<ul class="credit-list">
+				{filmVideo.map(([title, role, venue]) => (
+					<li><span class="credit-title">{title}</span><span class="credit-role">{role}</span><span class="credit-venue">{venue}</span></li>
+				))}
+			</ul>
+		</section>
 
-	<section class="resume-section">
-		<h2>Festivals &amp; Special Events</h2>
-		<ul class="credit-list">
-			{festivals.map(([title, role, venue]) => (
-				<li><span class="credit-title">{title}</span><span class="credit-role">{role}</span><span class="credit-venue">{venue}</span></li>
-			))}
-		</ul>
-	</section>
+		<section class="resume-section">
+			<h2>Festivals &amp; Special Events</h2>
+			<ul class="credit-list">
+				{festivals.map(([title, role, venue]) => (
+					<li><span class="credit-title">{title}</span><span class="credit-role">{role}</span><span class="credit-venue">{venue}</span></li>
+				))}
+			</ul>
+		</section>
 
-	<section class="resume-section">
-		<h2>Choreography Work</h2>
-		<ul class="credit-list">
-			{choreography.map(([venue, project]) => (
-				<li><span class="credit-title">{venue}</span><span class="credit-role">{project}<br />(Choreographer)</span><span class="credit-venue"></span></li>
-			))}
-		</ul>
-	</section>
+		<section class="resume-section">
+			<h2>Choreography Work</h2>
+			<ul class="credit-list">
+				{choreography.map(([title, role, venue]) => (
+					<li><span class="credit-title">{title}</span><span class="credit-role">{role}</span><span class="credit-venue">{venue}</span></li>
+				))}
+			</ul>
+		</section>
 
-	<section class="resume-section">
-		<h2>Stylization &amp; Specialties</h2>
-		<p>
-			Egyptian &amp; Lebanese Cabaret, American Cabaret, Egyptian
-			Folkloric, Turkish Folkloric, Debke, Cane, Zills, Sword, Veil,
-			Floor work, Choreography, Acting for Dancers.
-		</p>
-	</section>
+		<section class="resume-section">
+			<h2>Stylization &amp; Specialties</h2>
+			<p>
+				Egyptian &amp; Lebanese Cabaret, American Cabaret, Egyptian
+				Folkloric, Turkish Folkloric, Debke, Cane, Zills, Sword, Veil,
+				Floor work, Choreography, Acting for Dancers.
+			</p>
+		</section>
 
-	<section class="resume-section">
-		<h2>Education</h2>
-		<ul class="credit-list">
-			{education.map(([type, instructor, format]) => (
-				<li><span class="credit-title">{type}</span><span class="credit-role">{instructor}</span><span class="credit-venue">{format}</span></li>
-			))}
-		</ul>
-	</section>
+		<section class="resume-section">
+			<h2>Education</h2>
+			<ul class="credit-list">
+				{education.map(([type, instructor, format]) => (
+					<li><span class="credit-title">{type}</span><span class="credit-role">{instructor}</span><span class="credit-venue">{format}</span></li>
+				))}
+			</ul>
+		</section>
 
-	<section class="resume-section">
-		<h2>Bachelor of Art</h2>
-		<ul class="credit-list">
-			<li><span class="credit-title">Major: Theater Performance</span><span class="credit-role">Minor: Voice</span><span class="credit-venue">Middle Tennessee State University</span></li>
-		</ul>
-	</section>
+		<section class="resume-section">
+			<h2>Bachelor of Art</h2>
+			<ul class="credit-list">
+				<li><span class="credit-title">Major: Theater Performance</span><span class="credit-role">Minor: Voice</span><span class="credit-venue">MTSU</span></li>
+			</ul>
+		</section>
 
-	<section class="resume-section">
-		<h2>Teaching</h2>
-		<ul class="credit-list">
-			{teaching.map(([type, venue, format]) => (
-				<li><span class="credit-title">{type}</span><span class="credit-role">{venue}</span><span class="credit-venue">{format}</span></li>
-			))}
-		</ul>
-	</section>
+		<section class="resume-section">
+			<h2>Teaching</h2>
+			<ul class="credit-list">
+				{teaching.map(([type, venue, format]) => (
+					<li><span class="credit-title">{type}</span><span class="credit-role">{venue}</span><span class="credit-venue">{format}</span></li>
+				))}
+			</ul>
+		</section>
 
-	<section class="resume-section">
-		<h2>Miscellaneous</h2>
-		<p>
-			Guest Performer: Workshops &amp; Events in Lexington, Ohio,
-			Florida, Alabama, etc.<br />
-			Spanish Dance Society: Testing up to Level 3, Extensive Theater
-			Training &amp; Performance.<br />
-			Additional Dance Training / Practice with Arabic Musicians.
-		</p>
-		<p>
-			<strong>Presentations</strong><br />
-			Roots, Rhythm &amp; Religion: World Music &amp; Dance at
-			Vanderbilt &mdash; presented on behalf of the Vanderbilt
-			University Dance Program.<br />
-			History &amp; Health Benefits of Bellydance &mdash; TN State
-			Parks Recreation Conference (Metro Parks).<br />
-			Celebrating a Multi-Cultural Christmas &mdash; Nashville Public
-			Library.<br />
-			History &amp; Health Benefits of Bellydance &mdash;
-			International Week at MTSU.
-		</p>
-	</section>
+		<section class="resume-section">
+			<h2>Miscellaneous</h2>
+			<p>
+				<strong>Guest Performer:</strong> Workshops &amp; Events in Lexington, Ohio,
+				Florida, Alabama, etc.<br />
+				<strong>Spanish Dance Society:</strong> Testing up to Level 3<br />
+				<strong>Extensive Theater Training &amp; Performance</strong><br />
+				<strong>Dance Training / Practice with Arabic Musicians</strong>
+			</p>
+			<p>
+				<strong>Presentations</strong><br />
+				<strong>Roots, Rhythm &amp; Religion:</strong> World Music &amp; Dance at
+				Vanderbilt<br />
+				<strong>History &amp; Health Benefits of Bellydance:</strong> TN State
+				Parks Recreation Conference<br />
+				<strong>Celebrating a Multi-Cultural Christmas:</strong> Nashville Public
+				Library<br />
+				<strong>History &amp; Health Benefits of Bellydance:</strong> International Week at MTSU
+			</p>
+		</section>
 
-	<a class="back-link" href="/about/">&larr; Back to About</a>
-	</div>
+		<a class="back-link" href="/about/">&larr; Back to About</a>
+	</SplitBioLayout>
 </BaseLayout>
-
-<style>
-	:global(main:has(.resume-page)) {
-		background: var(--color-surface);
-		color: var(--color-ink);
-	}
-
-	:global(main:has(.resume-page) h1),
-	:global(main:has(.resume-page) h2) {
-		color: var(--color-maroon);
-	}
-
-	:global(main:has(.resume-page) h1) {
-		font-family: var(--font-script);
-		font-size: clamp(2.5rem, 8vw, 3.5rem);
-		line-height: 1;
-		margin: 0 0 0.5rem;
-	}
-
-	:global(main:has(.resume-page) a) {
-		color: var(--color-maroon);
-	}
-
-	:global(main:has(.resume-page) a:hover) {
-		color: var(--color-mauve);
-	}
-
-	:global(main:has(.resume-page) .lede) {
-		color: var(--color-ink-soft);
-	}
-
-	:global(main:has(.resume-page) .resume-header) {
-		border-bottom-color: var(--color-mauve-light);
-	}
-
-	:global(main:has(.resume-page) .resume-section h2) {
-		border-bottom-color: rgb(58 36 48 / 15%);
-	}
-
-	:global(main:has(.resume-page) .credit-list li) {
-		border-bottom-color: rgb(58 36 48 / 15%);
-	}
-
-	:global(main:has(.resume-page) .credit-role) {
-		color: var(--color-ink-soft);
-	}
-
-	:global(main:has(.resume-page) .credit-venue) {
-		color: var(--color-mauve);
-	}
-
-	.performance-section {
-		position: relative;
-	}
-
-	.performance-photo {
-		display: block;
-		width: 100%;
-		height: auto;
-		margin-top: 1.5rem;
-		border-radius: 0.5rem;
-	}
-
-	@media (min-width: 48rem) {
-		.performance-photo {
-			position: absolute;
-			top: 2.75rem;
-			right: 0;
-			bottom: 0;
-			width: 14rem;
-			height: auto;
-			margin-top: 0;
-			object-fit: cover;
-			object-position: center;
-		}
-	}
-</style>

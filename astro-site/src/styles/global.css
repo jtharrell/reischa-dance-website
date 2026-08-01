@@ -327,8 +327,8 @@ main a:hover {
 
 .resume-section h2 {
 	font-size: 1.2rem;
-	border-bottom: 1px solid var(--color-content-border);
-	padding-bottom: 0.4rem;
+	text-decoration: underline;
+	margin-bottom: 0.2rem;
 }
 
 .credit-list {
@@ -363,13 +363,7 @@ main a:hover {
 .credit-venue {
 	color: var(--color-lavender);
 	flex: 1 1 10rem;
-	text-align: right;
-}
-
-@media (max-width: 30rem) {
-	.credit-venue {
-		text-align: left;
-	}
+	text-align: left;
 }
 
 .class-info-grid {

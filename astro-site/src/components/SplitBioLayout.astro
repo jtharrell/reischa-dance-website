@@ -7,12 +7,16 @@ export interface Props {
 	title: string;
 	mediaFraction?: number;
 	imageWidth?: number;
+	mediaHeight?: string;
 }
 
-const { image, imageAlt = '', title, mediaFraction = 1 / 3, imageWidth = 800 } = Astro.props;
+const { image, imageAlt = '', title, mediaFraction = 1 / 3, imageWidth = 800, mediaHeight } = Astro.props;
 ---
 
-<div class="split-layout" style={`--media-fraction: ${mediaFraction}`}>
+<div
+	class={`split-layout${mediaHeight ? ' split-layout--fixed' : ''}`}
+	style={`--media-fraction: ${mediaFraction};${mediaHeight ? ` --media-height: ${mediaHeight};` : ''}`}
+>
 	<div class="split-layout__media">
 		<Image src={image} alt={imageAlt} width={imageWidth} format="webp" />
 	</div>
@@ -107,6 +111,14 @@ const { image, imageAlt = '', title, mediaFraction = 1 / 3, imageWidth = 800 } =
 		.split-layout__content {
 			flex: 1 1 calc((var(--content-fraction) * 100%) - (var(--content-fraction) * 2.5rem));
 			min-width: 0;
+		}
+
+		.split-layout--fixed {
+			align-items: flex-start;
+		}
+
+		.split-layout--fixed .split-layout__media {
+			height: var(--media-height);
 		}
 	}
 </style>
