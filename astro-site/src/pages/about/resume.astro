@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import veilPhoto from '../../assets/hero/reischa-w-veil-2.JPG';
+import performancePhoto from '../../assets/hero/reischa-in-red.jpg';
 
 const restaurantClub = [
 	['Bebo\'s Cafe', 'Special Guest Dancer'],
@@ -114,7 +114,7 @@ const teaching = [
 				<li><span class="credit-title">{venue}</span><span class="credit-role">{role}</span><span class="credit-venue"></span></li>
 			))}
 		</ul>
-		<Image class="performance-photo" src={veilPhoto} alt="Reischa dancing with a purple veil" width={400} format="webp" />
+		<Image class="performance-photo" src={performancePhoto} alt="Reischa performing in a red dance costume" width={400} format="webp" />
 	</section>
 
 	<section class="resume-section">
@@ -286,7 +286,7 @@ const teaching = [
 			height: auto;
 			margin-top: 0;
 			object-fit: cover;
-			object-position: top center;
+			object-position: center;
 		}
 	}
 </style>
