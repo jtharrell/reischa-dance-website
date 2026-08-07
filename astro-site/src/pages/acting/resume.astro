@@ -1,6 +1,6 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import SplitBioLayout from '../../components/SplitBioLayout.astro';
 import headshot from '../../assets/hero/acting-headshot.jpg';
 
 const film = [
@@ -63,73 +63,185 @@ const training = [
 ---
 
 <BaseLayout title="Acting Resume" description="Reischa Harrell's professional acting resume — film, television, theatre, and training credits.">
-	<SplitBioLayout
-		image={headshot}
-		imageAlt="Reischa Harrell acting headshot"
-		title="Reischa's Acting Resume"
-		mediaFraction={0.3}
-		mediaHeight="46.75rem"
-	>
-		<p class="lede">5'7" | 133 lbs. | Non-Union</p>
-		<p class="contact-line">
-			Agent: Talent Trek &nbsp;|&nbsp; luri7@yahoo.com &nbsp;|&nbsp; 615-593-7119
-		</p>
-		<p><a href="/documents/reischa-acting-resume.pdf" target="_blank" rel="noopener noreferrer">Download PDF</a></p>
-
-		<section class="resume-section">
-			<h2>Film</h2>
-			<ul class="credit-list">
-				{film.map(([title, role, credit]) => (
-					<li><span class="credit-title">{title}</span><span class="credit-role">{role}</span><span class="credit-venue">{credit}</span></li>
-				))}
-			</ul>
-		</section>
-
-		<section class="resume-section">
-			<h2>Television</h2>
-			<ul class="credit-list">
-				{television.map(([title, role, credit]) => (
-					<li><span class="credit-title">{title}</span><span class="credit-role">{role}</span><span class="credit-venue">{credit}</span></li>
-				))}
-			</ul>
-		</section>
-
-		<section class="resume-section">
-			<h2>Theatre</h2>
-			<ul class="credit-list">
-				{theatre.map(([title, role, venue]) => (
-					<li><span class="credit-title">{title}</span><span class="credit-role">{role}</span><span class="credit-venue">{venue}</span></li>
-				))}
-			</ul>
-		</section>
-
-		<section class="resume-section">
-			<h2>Training</h2>
-			<ul class="credit-list">
-				{training.map(([type, instructor, format]) => (
-					<li><span class="credit-title">{type}</span><span class="credit-role">{instructor}</span><span class="credit-venue">{format}</span></li>
-				))}
-			</ul>
-		</section>
-
-		<section class="resume-section">
-			<h2>Special Skills</h2>
-			<p>
-				<strong>Dialects:</strong> Standard British, Cockney, Tennessee / Southern, Irish, New York<br />
-				<strong>Singing:</strong> Musical Theatre (Advanced), Classical (Intermediate), Range: E3 to F#5 (Mix/Belt), F#6 (Head)<br />
-				<strong>Dance:</strong> Belly Dance (Advanced), Ballet (Intermediate), Jazz (Intermediate), Flamenco (Intermediate), Tap (Beginner)<br />
-				<strong>Other:</strong> Singing, Songwriting, Choreographing, Beginner Roller Skating, Art Modeling<br />
-				<strong>Miscellaneous Performances:</strong> Dancer at Middle Eastern Events, Choreography for Theatre
+	<div class="acting-resume">
+		<div class="acting-resume__media">
+			<Image src={headshot} alt="Reischa Harrell acting headshot" width={320} format="webp" />
+		</div>
+		<div class="acting-resume__content">
+			<h1>Reischa's Acting Resume</h1>
+			<p class="lede">5'7" | 133 lbs. | Non-Union</p>
+			<p class="contact-line">
+				Agent: Talent Trek &nbsp;|&nbsp; luri7@yahoo.com &nbsp;|&nbsp; 615-593-7119
 			</p>
-		</section>
+			<p><a href="/documents/reischa-acting-resume.pdf" target="_blank" rel="noopener noreferrer">Download PDF</a></p>
 
-		<a class="back-link" href="/acting/">&larr; Back to Acting</a>
-	</SplitBioLayout>
+			<div class="credit-table">
+				<section class="resume-section">
+					<h2>Film</h2>
+					<ul class="credit-list">
+						{film.map(([title, role, credit]) => (
+							<li><span class="credit-title">{title}</span><span class="credit-role">{role}</span><span class="credit-venue">{credit}</span></li>
+						))}
+					</ul>
+				</section>
+
+				<section class="resume-section">
+					<h2>Television</h2>
+					<ul class="credit-list">
+						{television.map(([title, role, credit]) => (
+							<li><span class="credit-title">{title}</span><span class="credit-role">{role}</span><span class="credit-venue">{credit}</span></li>
+						))}
+					</ul>
+				</section>
+
+				<section class="resume-section">
+					<h2>Theatre</h2>
+					<ul class="credit-list">
+						{theatre.map(([title, role, venue]) => (
+							<li><span class="credit-title">{title}</span><span class="credit-role">{role}</span><span class="credit-venue">{venue}</span></li>
+						))}
+					</ul>
+				</section>
+
+				<section class="resume-section">
+					<h2>Training</h2>
+					<ul class="credit-list">
+						{training.map(([type, instructor, format]) => (
+							<li><span class="credit-title">{type}</span><span class="credit-role">{instructor}</span><span class="credit-venue">{format}</span></li>
+						))}
+					</ul>
+				</section>
+			</div>
+
+			<section class="resume-section">
+				<h2>Special Skills</h2>
+				<p>
+					<strong>Dialects:</strong> Standard British, Cockney, Tennessee / Southern, Irish, New York<br />
+					<strong>Singing:</strong> Musical Theatre (Advanced), Classical (Intermediate), Range: E3 to F#5 (Mix/Belt), F#6 (Head)<br />
+					<strong>Dance:</strong> Belly Dance (Advanced), Ballet (Intermediate), Jazz (Intermediate), Flamenco (Intermediate), Tap (Beginner)<br />
+					<strong>Other:</strong> Singing, Songwriting, Choreographing, Beginner Roller Skating, Art Modeling<br />
+					<strong>Miscellaneous Performances:</strong> Dancer at Middle Eastern Events, Choreography for Theatre
+				</p>
+			</section>
+
+			<a class="back-link" href="/acting/">&larr; Back to Acting</a>
+		</div>
+	</div>
 </BaseLayout>
 
 <style>
+	:global(main:has(.acting-resume)) {
+		background: var(--color-surface);
+	}
+
+	.acting-resume {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
+	}
+
+	@media (min-width: 40rem) {
+		.acting-resume {
+			grid-template-columns: 2.5in 1fr;
+			align-items: start;
+			margin-left: calc(-1 * (max(0px, (100vw - var(--content-max-width)) / 2) + 1.5rem));
+			width: calc(100% + max(0px, (100vw - var(--content-max-width)) / 2) + 1.5rem);
+		}
+	}
+
+	.acting-resume__media img {
+		width: 2.5in;
+		height: 3.5in;
+		object-fit: cover;
+		border-radius: 0.4rem;
+		display: block;
+	}
+
+	.acting-resume__content {
+		min-width: 0;
+	}
+
+	.acting-resume,
+	.acting-resume * {
+		color: #000;
+	}
+
+	.acting-resume h1 {
+		font-family: var(--font-script);
+		color: var(--color-maroon);
+		font-size: clamp(2rem, 6vw, 2.75rem);
+		line-height: 1;
+		margin: 0 0 0.75rem;
+	}
+
+	a {
+		text-decoration: underline;
+	}
+
 	.contact-line {
-		color: var(--color-ink-soft);
 		margin-top: -0.5rem;
+	}
+
+	p {
+		font-size: 0.85rem;
+		line-height: 1.35;
+	}
+
+	.lede {
+		font-size: 0.95rem;
+	}
+
+	.resume-section {
+		margin-top: 1.25rem;
+	}
+
+	.resume-section h2 {
+		font-size: 1rem;
+		margin-bottom: 0;
+	}
+
+	.credit-table {
+		display: grid;
+		grid-template-columns: max-content max-content 1fr;
+		column-gap: 0.75rem;
+		row-gap: 0;
+	}
+
+	.credit-table .resume-section {
+		display: contents;
+	}
+
+	.credit-table .resume-section h2 {
+		grid-column: 1 / -1;
+		margin-top: 1.25rem;
+	}
+
+	.credit-table .credit-list {
+		display: contents;
+	}
+
+	.credit-list li {
+		display: contents;
+		font-size: 0.8rem;
+		line-height: 1.25;
+	}
+
+	.credit-title,
+	.credit-role,
+	.credit-venue {
+		flex: none;
+		padding: 0.15rem 0;
+		border-bottom: 1px dashed var(--color-content-border);
+		white-space: nowrap;
+	}
+
+	.credit-list li:last-child .credit-title,
+	.credit-list li:last-child .credit-role,
+	.credit-list li:last-child .credit-venue {
+		border-bottom: none;
+	}
+
+	.back-link {
+		font-size: 0.85rem;
 	}
 </style>
