@@ -1,0 +1,135 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SplitBioLayout from '../../components/SplitBioLayout.astro';
+import headshot from '../../assets/hero/acting-headshot.jpg';
+
+const film = [
+	['Blood Feud', 'Lead', 'Tanner Harrell'],
+	['The Source', 'Lead', 'Alston Huff'],
+	['Dead Cobra', 'Lead', 'David Loeffler'],
+	['Chapter Next', 'Supporting', 'David Farmer'],
+	['The Mask of Alex Grealey', 'Supporting', 'David Miller'],
+	['Office Voodoo', 'Supporting', 'Quita Stewart'],
+	['Look at Your Game Girl', 'Supporting', 'David Farmer'],
+];
+
+const television = [
+	['Bell Witch Documentary', 'Guest Star', 'Tupelo Productions / Travel Channel'],
+	['Affair Short', 'Guest Star', '700 Club'],
+	['Life Source Lesson', 'Guest Star', 'Lifeway Christian Resources'],
+	['Writer Conference Lesson', 'Guest Star', 'Lifeway Christian Resources'],
+	['Sunday School Lesson', 'Guest Star', 'Lifeway Christian Resources'],
+];
+
+const theatre = [
+	['Midsummer Night\'s Dream', 'Titania & Hippolyta', 'Williamson & Maury Performing Arts'],
+	['Twisted Ranch', 'Narrator', 'Ghost Light Theatre'],
+	['Tales of Arabian Nights', 'Dynazhade', 'Nashville State Community College'],
+	['Midsummer Night\'s Dream', 'Hippolyta', 'Watershed Public Theatre'],
+	['Lend Me a Tenor', 'Maggie Saunders', 'Encore Theatre Company'],
+	['Pippin', 'Fastrada & Ensemble', 'Boiler Room Theatre'],
+	['The Piper', 'Honora & Ensemble', 'Actor\'s Bridge Ensemble'],
+	['Hansel and Gretel', 'Mother', 'Roxy Regional Theatre'],
+	['Romeo and Juliet', 'Lady Capulet', 'Theatre Ensemble of Nashville'],
+	['The Murder Room', 'Suzan', 'Encore Theatre Company'],
+	['MacBeth', 'Hecate', 'Volunteer State Theatre'],
+	['The Selkie', 'Margaret', 'Middle Tennessee State University'],
+	['Belly Fruit', 'Aracely', 'Middle Tennessee State University'],
+	['The Swimming Pool', 'Kimberly', 'Middle Tennessee State University'],
+	['Don\'t Mention My Name in There', 'Kitty', 'Lakewood Theatre'],
+	['Independence', 'Kess', 'Theatre Ensemble of Nashville'],
+	['Smoke On the Mountain', 'June', 'Encore Theatre Company'],
+	['The Odd Couple', 'Gwendolyn Pigeon', 'Encore Theatre Company'],
+	['Vanities', 'Mary', 'Lakewood Theatre'],
+	['Dearly Departed', 'Suzanne', 'Lakewood Theatre'],
+	['The Passage to Fey', 'Primrose', 'Donelson Center for the Arts'],
+	['Little Women', 'Meg', 'Main Street Theatre'],
+	['The Cherry Orchard', 'Dunyasha', 'Murfreesboro Center for the Arts'],
+	['WXYZ Drama On Your Dial', 'Cigarette Girl', 'Groundworks Theatre'],
+	['Eat The Runt', 'Jean', 'Groundworks Theatre'],
+];
+
+const training = [
+	['Scene Study / Cold Reading', 'Elizabeth Vidovic', 'Plan A(cting)'],
+	['Scene Study / Cold Reading', 'William Arnold', 'Fourth Wall'],
+	['Scene Study / Cold Reading', 'Caroline Locorriere', 'Nashville Acting Studio'],
+	['Scene Study', 'Lauren Shouse', 'Tennessee Repertory Theatre'],
+	['Strassberg Method', 'David Strasberg', 'Strasberg Institute, LA'],
+	['Meisner Method', 'Bill Feheely', 'Actor\'s Bridge'],
+	['Dialects', 'Carla Coble', 'Private Study'],
+	['Acting 1 & 2', 'Dale McGilliard', 'Middle Tennessee State University'],
+	['B.A. Theatre Performance', '', 'Middle Tennessee State University'],
+];
+---
+
+<BaseLayout title="Acting Resume" description="Reischa Harrell's professional acting resume — film, television, theatre, and training credits.">
+	<SplitBioLayout
+		image={headshot}
+		imageAlt="Reischa Harrell acting headshot"
+		title="Reischa's Acting Resume"
+		mediaFraction={0.3}
+		mediaHeight="46.75rem"
+	>
+		<p class="lede">5'7" | 133 lbs. | Non-Union</p>
+		<p class="contact-line">
+			Agent: Talent Trek &nbsp;|&nbsp; luri7@yahoo.com &nbsp;|&nbsp; 615-593-7119
+		</p>
+		<p><a href="/documents/reischa-acting-resume.pdf" target="_blank" rel="noopener noreferrer">Download PDF</a></p>
+
+		<section class="resume-section">
+			<h2>Film</h2>
+			<ul class="credit-list">
+				{film.map(([title, role, credit]) => (
+					<li><span class="credit-title">{title}</span><span class="credit-role">{role}</span><span class="credit-venue">{credit}</span></li>
+				))}
+			</ul>
+		</section>
+
+		<section class="resume-section">
+			<h2>Television</h2>
+			<ul class="credit-list">
+				{television.map(([title, role, credit]) => (
+					<li><span class="credit-title">{title}</span><span class="credit-role">{role}</span><span class="credit-venue">{credit}</span></li>
+				))}
+			</ul>
+		</section>
+
+		<section class="resume-section">
+			<h2>Theatre</h2>
+			<ul class="credit-list">
+				{theatre.map(([title, role, venue]) => (
+					<li><span class="credit-title">{title}</span><span class="credit-role">{role}</span><span class="credit-venue">{venue}</span></li>
+				))}
+			</ul>
+		</section>
+
+		<section class="resume-section">
+			<h2>Training</h2>
+			<ul class="credit-list">
+				{training.map(([type, instructor, format]) => (
+					<li><span class="credit-title">{type}</span><span class="credit-role">{instructor}</span><span class="credit-venue">{format}</span></li>
+				))}
+			</ul>
+		</section>
+
+		<section class="resume-section">
+			<h2>Special Skills</h2>
+			<p>
+				<strong>Dialects:</strong> Standard British, Cockney, Tennessee / Southern, Irish, New York<br />
+				<strong>Singing:</strong> Musical Theatre (Advanced), Classical (Intermediate), Range: E3 to F#5 (Mix/Belt), F#6 (Head)<br />
+				<strong>Dance:</strong> Belly Dance (Advanced), Ballet (Intermediate), Jazz (Intermediate), Flamenco (Intermediate), Tap (Beginner)<br />
+				<strong>Other:</strong> Singing, Songwriting, Choreographing, Beginner Roller Skating, Art Modeling<br />
+				<strong>Miscellaneous Performances:</strong> Dancer at Middle Eastern Events, Choreography for Theatre
+			</p>
+		</section>
+
+		<a class="back-link" href="/acting/">&larr; Back to Acting</a>
+	</SplitBioLayout>
+</BaseLayout>
+
+<style>
+	.contact-line {
+		color: var(--color-ink-soft);
+		margin-top: -0.5rem;
+	}
+</style>
