@@ -1,42 +1,51 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import HomeHero from '../../components/HomeHero.astro';
-import attireHero from '../../assets/hero/belly-dance.jpg';
+import SplitBioLayout from '../../components/SplitBioLayout.astro';
+import attireHero from '../../assets/hero/attire.png';
 ---
 
 <BaseLayout title="Recommended Attire" description="Recommended attire for bellydance and Spanish dance classes with Reischa.">
-	<HomeHero
-		slot="hero"
+	<SplitBioLayout
 		image={attireHero}
-		imageAlt="Reischa in a purple beaded costume, sweeping a purple veil"
+		imageAlt="Reischa in a teal beaded costume, posing in front of a brick and window backdrop"
+		title="Recommended Attire"
+		mediaFraction={0.3}
+		mediaWidth="27rem"
+		mediaHeight="48rem"
 	>
-		<h1>Recommended Attire</h1>
+		<section class="section">
+			<h2>Belly Dance</h2>
+			<p><strong>Clothing &mdash;</strong> Be comfortable and able to move freely. I recommend jazz pants, exercise pants, cropped, fitted dance tops, or leotards. A hip scarf without coins is preferred for class work.</p>
+			<p><strong>Shoes &mdash;</strong> Not required, however you may prefer to wear jazz or lyrical shoes, and some street shoes may work for class.</p>
+			<p><strong>Discouraged &mdash;</strong> Please do not wear jeans, non-dance skirts, street shoes, &amp; other restricting articles.</p>
+		</section>
 
-		<h2>Belly Dance</h2>
-		<p><strong>Clothing &mdash;</strong> Be comfortable and able to move freely. I recommend jazz pants, exercise pants, cropped, fitted dance tops, or leotards. A hip scarf without coins is preferred for class work.</p>
-		<p><strong>Shoes &mdash;</strong> Not required, however you may prefer to wear jazz or lyrical shoes, and some street shoes may work for class.</p>
-		<p><strong>Discouraged &mdash;</strong> Please do not wear jeans, non-dance skirts, street shoes, &amp; other restricting articles.</p>
+		<section class="section">
+			<h2>Spanish Dance</h2>
+			<p><strong>Clothing &mdash;</strong> For most classes, any modest exercise or dance wear is suitable. Close to exams, a black flamenco skirt, tights, and a black long-sleeved leotard is required.</p>
+			<p><strong>Shoes &mdash;</strong> Character shoes and some dress shoes are ok to start. Flamenco shoes are preferred, and will be most suitable for exams &amp; performance.</p>
+			<p><strong>Discouraged &mdash;</strong> Please do not wear jeans, non-dance skirts, street shoes, &amp; other restricting articles.</p>
+		</section>
 
-		<h2>Spanish Dance</h2>
-		<p><strong>Clothing &mdash;</strong> For most classes, any modest exercise or dance wear is suitable. Close to exams, a black flamenco skirt, tights, and a black long-sleeved leotard is required.</p>
-		<p><strong>Shoes &mdash;</strong> Character shoes and some dress shoes are ok to start. Flamenco shoes are preferred, and will be most suitable for exams &amp; performance.</p>
-		<p><strong>Discouraged &mdash;</strong> Please do not wear jeans, non-dance skirts, street shoes, &amp; other restricting articles.</p>
+		<section class="section">
+			<h2>Recommended Online Stores</h2>
+			<ul>
+				<li><a href="http://www.Dahlal.com" target="_blank" rel="noopener noreferrer">Dahlal</a> &mdash; Coinless hip scarves, finger cymbals, veils.</li>
+				<li><a href="http://www.Discountdance.com" target="_blank" rel="noopener noreferrer">Discount Dance</a> &mdash; Dancewear, flamenco skirts, &amp; flamenco shoes.</li>
+				<li><a href="http://www.Onstagedancewear.com" target="_blank" rel="noopener noreferrer">Onstage Dancewear</a> &mdash; Dancewear, flamenco skirts, &amp; flamenco shoes.</li>
+				<li><a href="http://www.Flamencoconnection.com" target="_blank" rel="noopener noreferrer">Flamenco Connection</a> &mdash; Castanets, flamenco skirts &amp; shoes.</li>
+			</ul>
+		</section>
 
-		<h2>Recommended Online Stores</h2>
-		<ul>
-			<li><a href="http://www.Dahlal.com" target="_blank" rel="noopener noreferrer">Dahlal</a> &mdash; Coinless hip scarves, finger cymbals, veils.</li>
-			<li><a href="http://www.Discountdance.com" target="_blank" rel="noopener noreferrer">Discount Dance</a> &mdash; Dancewear, flamenco skirts, &amp; flamenco shoes.</li>
-			<li><a href="http://www.Onstagedancewear.com" target="_blank" rel="noopener noreferrer">Onstage Dancewear</a> &mdash; Dancewear, flamenco skirts, &amp; flamenco shoes.</li>
-			<li><a href="http://www.Flamencoconnection.com" target="_blank" rel="noopener noreferrer">Flamenco Connection</a> &mdash; Castanets, flamenco skirts &amp; shoes.</li>
-		</ul>
-
-		<h2>Recommended Local Stores</h2>
-		<ul>
-			<li><strong>Le Jazz:</strong> 1850 General George Patton Dr # E, Franklin, TN 37067 / 615-661-5111</li>
-			<li><strong>Spell's Dancewear:</strong> 2210 Crestmoor Rd. Nashville, TN 37215 / 615-292-4387</li>
-			<li><strong>Ooga Booga's Dancewear:</strong> 508 W Main St. Ste B. Lebanon, TN 37087 / 615-443-3221</li>
-		</ul>
+		<section class="section">
+			<h2>Recommended Local Stores</h2>
+			<ul>
+				<li><strong>Le Jazz:</strong> 1850 General George Patton Dr # E, Franklin, TN 37067 / 615-661-5111</li>
+				<li><strong>Spell's Dancewear:</strong> 2210 Crestmoor Rd. Nashville, TN 37215 / 615-292-4387</li>
+				<li><strong>Ooga Booga's Dancewear:</strong> 508 W Main St. Ste B. Lebanon, TN 37087 / 615-443-3221</li>
+			</ul>
+		</section>
 
 		<a class="back-link" href="/classes/">&larr; Back to Classes</a>
-	</HomeHero>
+	</SplitBioLayout>
 </BaseLayout>

@@ -1,68 +1,76 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import HomeHero from '../components/HomeHero.astro';
-import bellyDanceHero from '../assets/hero/belly-dance.jpg';
+import SplitBioLayout from '../components/SplitBioLayout.astro';
+import whatIsHero from '../assets/hero/what-is.png';
 ---
 
 <BaseLayout title="What is Belly Dance?" description="An introduction to bellydance: what it is, its technique, and its history.">
-	<HomeHero
-		slot="hero"
-		image={bellyDanceHero}
+	<SplitBioLayout
+		image={whatIsHero}
 		imageAlt="Reischa in a purple beaded costume, sweeping a purple veil"
+		title="What is Belly Dance?"
+		mediaFraction={0.3}
+		mediaWidth="27rem"
+		mediaHeight="48rem"
 	>
-		<h1>What is Belly Dance?</h1>
-		<p>And better yet, why is it difficult, and require years of study?</p>
+		<p class="lede">And better yet, why is it difficult, and require years of study?</p>
 
-		<ul>
-			<li>
-				This dance form has been misunderstood as something offensive,
-				and even confused with stripping. Realize this dance form is
-				becoming more and more popular, respected, and cultivated
-				around the world. It is technically, musically, and
-				historically rich.
-			</li>
-			<li>Belly dance is a main dance form of Egypt, Lebanon, and other Middle Eastern countries.</li>
-			<li>
-				Belly dance is a nickname created in the States, because of
-				the use of abdominal techniques. The classical form of belly
-				dance is actually known as Oriental Dance or Raks Sharki.
-			</li>
-		</ul>
+		<section class="section">
+			<ul>
+				<li>
+					This dance form has been misunderstood as something offensive,
+					and even confused with stripping. Realize this dance form is
+					becoming more and more popular, respected, and cultivated
+					around the world. It is technically, musically, and
+					historically rich.
+				</li>
+				<li>Belly dance is a main dance form of Egypt, Lebanon, and other Middle Eastern countries.</li>
+				<li>
+					Belly dance is a nickname created in the States, because of
+					the use of abdominal techniques. The classical form of belly
+					dance is actually known as Oriental Dance or Raks Sharki.
+				</li>
+			</ul>
+		</section>
 
-		<h2>Technically</h2>
-		<ul>
-			<li>
-				Technically, it includes muscle isolations over very specific
-				foot patterns. Isolations often include hip and abdominal
-				contractions that create the beautiful snake-like appearance.
-			</li>
-			<li>Folkloric stylizations include footwork from various regions of the Middle East, while classical incorporates ballet and jazz.</li>
-			<li>The music includes specific rhythms and scales. Rhythms include patterns such as Beledi and Saidi.</li>
-			<li>
-				In its purest form, the dance and music are improvised.
-				However, the Western influence has caused dancers to take on
-				the concept of choreography. In the end, the dancer should be
-				able to improvise, which is no easy task.
-			</li>
-		</ul>
+		<section class="section">
+			<h2>Technically</h2>
+			<ul>
+				<li>
+					Technically, it includes muscle isolations over very specific
+					foot patterns. Isolations often include hip and abdominal
+					contractions that create the beautiful snake-like appearance.
+				</li>
+				<li>Folkloric stylizations include footwork from various regions of the Middle East, while classical incorporates ballet and jazz.</li>
+				<li>The music includes specific rhythms and scales. Rhythms include patterns such as Beledi and Saidi.</li>
+				<li>
+					In its purest form, the dance and music are improvised.
+					However, the Western influence has caused dancers to take on
+					the concept of choreography. In the end, the dancer should be
+					able to improvise, which is no easy task.
+				</li>
+			</ul>
+		</section>
 
-		<h2>History</h2>
-		<ul>
-			<li>Belly dance is the world's oldest dance form.</li>
-			<li>
-				Its origins are not known specifically, however, here is what
-				is known: one of its origins was preparation for childbirth.
-				It very likely has come to be out of religious ceremonies and
-				folkloric regional dances such as Zar, Ghawazee, and Saidi.
-			</li>
-			<li>Belly dance became a tradition celebrated at homes and at parties.</li>
-			<li>It has become a performance art because of its use in night clubs and concert halls.</li>
-		</ul>
-		<p>
-			The study and coordination of movement, music, and culture work
-			together and require much research and practice.
-		</p>
+		<section class="section">
+			<h2>History</h2>
+			<ul>
+				<li>Belly dance is the world's oldest dance form.</li>
+				<li>
+					Its origins are not known specifically, however, here is what
+					is known: one of its origins was preparation for childbirth.
+					It very likely has come to be out of religious ceremonies and
+					folkloric regional dances such as Zar, Ghawazee, and Saidi.
+				</li>
+				<li>Belly dance became a tradition celebrated at homes and at parties.</li>
+				<li>It has become a performance art because of its use in night clubs and concert halls.</li>
+			</ul>
+			<p>
+				The study and coordination of movement, music, and culture work
+				together and require much research and practice.
+			</p>
+		</section>
 
 		<a class="back-link" href="/">&larr; Back Home</a>
-	</HomeHero>
+	</SplitBioLayout>
 </BaseLayout>

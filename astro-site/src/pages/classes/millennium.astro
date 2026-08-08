@@ -1,18 +1,21 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import PageHero from '../../components/PageHero.astro';
-import millenniumHero from '../../assets/hero/classes-generic.jpg';
+import SplitBioLayout from '../../components/SplitBioLayout.astro';
+import millenniumHero from '../../assets/hero/attire.png';
 ---
 
-<BaseLayout title="Millennium Dance Complex" description="Bellydance class details at Millennium Dance Complex in Nashville, TN.">
-	<PageHero slot="hero" image={millenniumHero} title="Millennium Dance Complex" showTitle />
-
-	<p class="lede">Belly Dance Class</p>
-
-	<div class="class-info-grid">
-		<div>
+<BaseLayout title="Class Information" description="Bellydance class details at Millennium Dance Complex in Nashville, TN.">
+	<SplitBioLayout
+		image={millenniumHero}
+		imageAlt="Reischa in a teal beaded costume, posing in front of a brick and window backdrop"
+		title="Class Information"
+		mediaFraction={0.3}
+		mediaWidth="27rem"
+		mediaHeight="48rem"
+	>
+		<section class="section">
 			<h2>Beginner / Intermediate Bellydance</h2>
-			<p>Class on May 24 at 4:00 &ndash; 5:00 PM.</p>
+			<p><strong>See below for class offerings. Contact Reischa for private sessions.</strong></p>
 			<p>
 				Beginner / Intermediate Level, Studio Y. This is an
 				introduction to the fundamentals of belly dance used in all
@@ -22,7 +25,9 @@ import millenniumHero from '../../assets/hero/classes-generic.jpg';
 				refresher course. <strong>This class will include some
 				Intermediate level information.</strong>
 			</p>
+		</section>
 
+		<section class="section">
 			<h2>Intermediate / Advanced Bellydance</h2>
 			<p>
 				This class is not meeting until further notice. For the time
@@ -42,25 +47,28 @@ import millenniumHero from '../../assets/hero/classes-generic.jpg';
 				<a href="mailto:luri7@yahoo.com">luri7@yahoo.com</a><br />
 				615-593-7119
 			</p>
-		</div>
+		</section>
 
-		<dl class="class-meta">
-			<dt>Class Meeting Times</dt>
-			<dd>May 24 (4:00 PM &ndash; 5:00 PM)</dd>
+		<section class="section">
+			<h2>Class Details</h2>
+			<dl class="class-meta">
+				<dt>Class Meeting Times</dt>
+				<dd>Additional classes coming in the future. This is a busy performance season.</dd>
 
-			<dt>Class Meeting Location</dt>
-			<dd>Millennium Dance Complex<br />2844 Logan St<br />Nashville, TN 37211</dd>
+				<dt>Class Meeting Location</dt>
+				<dd>Millennium Dance Complex<br />2844 Logan St<br />Nashville, TN 37211</dd>
 
-			<dt>Registration</dt>
-			<dd>Email Reischa at <a href="mailto:luri7@yahoo.com">luri7@yahoo.com</a>. Early registration is encouraged.</dd>
+				<dt>Registration</dt>
+				<dd>Email Reischa at <a href="mailto:luri7@yahoo.com">luri7@yahoo.com</a>. Early registration is encouraged.</dd>
 
-			<dt>Pricing</dt>
-			<dd>$15 per class</dd>
+				<dt>Pricing</dt>
+				<dd>$15 per class</dd>
 
-			<dt>Payment</dt>
-			<dd>Cash or check can be received on the first day of class. Other payment options can be sent via email.</dd>
-		</dl>
-	</div>
+				<dt>Payment</dt>
+				<dd>Cash or check can be received on the first day of class. Other payment options can be sent via email.</dd>
+			</dl>
+		</section>
 
-	<a class="back-link" href="/classes/">&larr; Back to Classes</a>
+		<a class="back-link" href="/classes/">&larr; Back to Classes</a>
+	</SplitBioLayout>
 </BaseLayout>

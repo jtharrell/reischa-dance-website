@@ -8,14 +8,15 @@ export interface Props {
 	mediaFraction?: number;
 	imageWidth?: number;
 	mediaHeight?: string;
+	mediaWidth?: string;
 }
 
-const { image, imageAlt = '', title, mediaFraction = 1 / 3, imageWidth = 800, mediaHeight } = Astro.props;
+const { image, imageAlt = '', title, mediaFraction = 1 / 3, imageWidth = 800, mediaHeight, mediaWidth } = Astro.props;
 ---
 
 <div
-	class={`split-layout${mediaHeight ? ' split-layout--fixed' : ''}`}
-	style={`--media-fraction: ${mediaFraction};${mediaHeight ? ` --media-height: ${mediaHeight};` : ''}`}
+	class:list={['split-layout', { 'split-layout--fixed': Boolean(mediaHeight), 'split-layout--static': Boolean(mediaWidth) }]}
+	style={`--media-fraction: ${mediaFraction};${mediaHeight ? ` --media-height: ${mediaHeight};` : ''}${mediaWidth ? ` --media-width: ${mediaWidth};` : ''}`}
 >
 	<div class="split-layout__media">
 		<Image src={image} alt={imageAlt} width={imageWidth} format="webp" />
@@ -119,6 +120,14 @@ const { image, imageAlt = '', title, mediaFraction = 1 / 3, imageWidth = 800, me
 
 		.split-layout--fixed .split-layout__media {
 			height: var(--media-height);
+		}
+
+		/* Static variant: media keeps a fixed pixel size instead of
+		   growing with the viewport gutter, so only the content column
+		   reflows on resize. margin-left is left as-is so the media still
+		   bleeds flush to the viewport's left edge. */
+		.split-layout--static .split-layout__media {
+			width: var(--media-width);
 		}
 	}
 </style>
