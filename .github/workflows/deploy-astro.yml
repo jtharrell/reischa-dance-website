@@ -1,11 +1,12 @@
 name: Deploy Astro site to GitHub Pages
 
-# Manual trigger only for now, while the Astro rebuild lives alongside the
-# current live site (see SITE_REFRESH_PLAN.md). Switch the `on:` trigger to
-# `push: branches: [main]` at Phase 5 cutover, once the repo's Pages source
-# is switched from "Deploy from a branch" to "GitHub Actions" in
-# Settings > Pages.
+# Phase 5 cutover: deploys automatically on every push to main. Also keeps
+# workflow_dispatch so it can be re-run manually (e.g. right after switching
+# the repo's Pages source from "Deploy from a branch" to "GitHub Actions" in
+# Settings > Pages, without needing a new commit).
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
