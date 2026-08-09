@@ -10,41 +10,41 @@ import classesHero from '../../assets/hero/classes.jpg';
 		image={classesHero}
 		imageAlt="Reischa in a purple beaded costume, arching backward mid-pose"
 		imageWidth="44rem"
+		panelVerticalAlign="start"
+		panelMaxWidth="none"
 	>
-		<h1>Classes</h1>
-		<p>
-			Reischa teaches bellydance in Nashville, TN, offering group classes,
-			private lessons, and instruction for special events.
-		</p>
+		<h1>Class schedule</h1>
+		<p>Some class updates can be found on <a href="https://www.facebook.com/profile.php?id=61579200180746" target="_blank" rel="noopener noreferrer">this Facebook page</a>.</p>
 
-		<h2>Nashville Bellydance Class</h2>
-		<p>
-			<a href="/classes/millennium/">@ Millennium Dance Complex</a>
-		</p>
-		<p>
-			<a href="/classes/millennium/">Upcoming Group Class</a><br />
-			May 24 (4:00 PM &ndash; 5:00 PM)
-		</p>
-		<p>
-			Some class updates can be found on <a href="https://www.facebook.com/profile.php?id=61579200180746" target="_blank" rel="noopener noreferrer">this Facebook page</a>.
-		</p>
+		<h2><u>1. ONGOING CLASSES</u></h2>
+		<p>Sundays, 4:00 PM &ndash; 5:00 PM @ <a href="/classes/millennium/">Millennium Dance Complex</a></p>
 
-		<h2>Private Classes &amp; Special Events</h2>
-		<p>
-			Planning an event? Reischa is available to teach at parties and
-			private classes.
-		</p>
+		<h2><u>2. PRIVATE CLASSES &amp; SPECIAL EVENTS</u></h2>
+		<p>Day of the week flexible<br />
+		Planning an event or workshop? Reischa is available for <a href="/contact/">private instruction</a>.</p>
 
-		<h2>Past Vanderbilt Dance Program Classes</h2>
-		<p>
-			Reischa taught bellydance and flamenco at Vanderbilt University for
-			12 years. Those class listings are kept below for reference.
-		</p>
-		<ul>
+		<h2><u>3. PAST CLASSES (12 years)</u></h2>
+		<p>Mondays, 5:00 PM &ndash; 6:00 PM @ <a href="/classes/vanderbilt-bellydance/">Vanderbilt University</a></p>
+		<!--<ul>
 			<li><a href="/classes/vanderbilt-bellydance/">Vanderbilt Bellydance (archived)</a></li>
 			<li><a href="/classes/vanderbilt-flamenco/">Vanderbilt Flamenco (archived)</a></li>
-		</ul>
+		</ul>-->
 
 		<a class="back-link" href="/classes/attire/">Recommended Attire &rarr;</a>
 	</HomeHero>
 </BaseLayout>
+
+<style>
+	:global(.home-hero__panel),
+	:global(.home-hero__panel p) {
+		color: #000000;
+	}
+
+	:global(.home-hero__panel h2) {
+		margin-bottom: 0.25rem;
+	}
+
+	:global(.home-hero__panel p) {
+		margin-top: 0;
+	}
+</style>

@@ -1,19 +1,24 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import PageHero from '../../components/PageHero.astro';
-import vandyHero from '../../assets/hero/classes-generic.jpg';
+import SplitBioLayout from '../../components/SplitBioLayout.astro';
+import vandyHero from '../../assets/hero/attire.png';
+import vandyClassPic from '../../assets/hero/vandy-class-pic.jpg';
 ---
 
 <BaseLayout title="Vanderbilt Bellydance (Archived)" description="Archived Vanderbilt Dance Program bellydance class listing.">
-	<PageHero slot="hero" image={vandyHero} title="Vanderbilt Dance Program — Belly Dance Class" showTitle />
-
-	<p class="lede">Belly Dance Class</p>
-	<p><em>Archived listing from Reischa's time as a Vanderbilt Dance Program instructor.</em></p>
-
-	<div class="class-info-grid">
-		<div>
-			<h2>Beginner / Intermediate Bellydance</h2>
+	<SplitBioLayout
+		image={vandyHero}
+		imageAlt="Reischa in a teal beaded costume, posing in front of a brick and window backdrop"
+		title="Vanderbilt Belly Dance"
+		mediaFraction={0.3}
+		mediaWidth="27rem"
+		mediaHeight="48rem"
+	>
+		<section class="section">
+			<h2>Beginner / Intermediate Bellydance (Past)</h2>
 			<p>Class started August 25th, 2014. Mondays, 6:00 &ndash; 7:00 PM.</p>
+			<p>Class meeting location: Memorial Gym, 2201 West End, Nashville, TN 37240</p>
 			<p>
 				Beginner / Intermediate Level, Studio A. This is an
 				introduction to the fundamentals of belly dance used in all
@@ -23,57 +28,20 @@ import vandyHero from '../../assets/hero/classes-generic.jpg';
 				refresher course. This class will include Intermediate level
 				information.
 			</p>
+		</section>
 
-			<h2>Intermediate / Advanced Bellydance</h2>
-			<p>
-				This class is not meeting until further notice. For the time
-				being, the Intermediate Class is being integrated into the
-				Beginner Class listed above.
-			</p>
-			<p>
-				This is a continuation of belly dance fundamentals.
-				Challenging exercises, combinations, choreography, and even
-				improvisation will be studied.
-				<strong>This is an intermediate level class recommended to students with prior study.</strong>
-			</p>
+		<Image class="class-pic" src={vandyClassPic} alt="Reischa's Vanderbilt bellydance class" width={640} format="webp" />
 
-			<p>
-				Feel free to email / call Reischa with questions regarding
-				these classes.<br />
-				<a href="mailto:luri7@yahoo.com">luri7@yahoo.com</a><br />
-				615-593-7119
-			</p>
-		</div>
-
-		<dl class="class-meta">
-			<dt>Class Meeting Location</dt>
-			<dd>Memorial Gym<br />2201 West End<br />Nashville, TN 37240</dd>
-
-			<dt>Registration Dates</dt>
-			<dd>
-				Aug 19th &ndash; 23rd at Sarratt Center Lobby.
-				(<a href="http://www.vanderbilt.edu/dance/about-the-program/directions/" target="_blank" rel="noopener noreferrer">Directions</a>)<br />
-				12&ndash;6 PM Tuesday&ndash;Friday / 11am&ndash;4pm Saturday, <strong>OR</strong> late registration at the Memorial Gym Dance Studios (cash or check only).
-			</dd>
-
-			<dt>Pricing</dt>
-			<dd>
-				14-week session.<br />
-				Community Members / Non-students: $136<br />
-				VU Faculty / Staff: $124<br />
-				VU Students: $112<br />
-				Single Classes: $12.00 each
-			</dd>
-
-			<dt>Contact Information</dt>
-			<dd>
-				Please contact Kelvin Amburgy at the Vanderbilt Dance Program
-				for more registration information.<br />
-				Sarratt Center: 322-2471 / 322-6400<br />
-				<a href="http://www.vanderbilt.edu/dance" target="_blank" rel="noopener noreferrer">Website</a>
-			</dd>
-		</dl>
-	</div>
-
-	<a class="back-link" href="/classes/">&larr; Back to Classes</a>
+		<a class="back-link" href="/classes/">&larr; Back to Classes</a>
+	</SplitBioLayout>
 </BaseLayout>
+
+<style>
+	.class-pic {
+		width: 24rem;
+		height: auto;
+		border-radius: 0.5rem;
+		display: block;
+		margin: 0 0 2rem;
+	}
+</style>

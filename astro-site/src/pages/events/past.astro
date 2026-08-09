@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import HomeHero from '../../components/HomeHero.astro';
-import pastHero from '../../assets/hero/belly-dance.jpg';
+import SplitBioLayout from '../../components/SplitBioLayout.astro';
+import pastHero from '../../assets/hero/notable.png';
 
 const columnOne = [
 	'The Nashville Ballet\'s production of "Scheherezade" (Tennessee Performing Arts Center / Nashville, TN.)',
@@ -40,26 +40,35 @@ const columnTwo = [
 ---
 
 <BaseLayout title="Notable Past Performances" description="A list of notable past bellydance performances by Reischa.">
-	<HomeHero
-		slot="hero"
+	<SplitBioLayout
 		image={pastHero}
 		imageAlt="Reischa in a purple beaded costume, sweeping a purple veil"
+		title="Notable Past Performances"
+		mediaFraction={0.3}
+		mediaWidth="27rem"
+		mediaHeight="48rem"
 	>
-		<h1>Notable Past Performances</h1>
-
-		<div class="link-grid link-grid--two">
-			<div>
-				<ul>
-					{columnOne.map((item) => <li>{item}</li>)}
-				</ul>
+		<section class="section">
+			<div class="link-grid link-grid--two">
+				<div>
+					<ul>
+						{columnOne.map((item) => <li>{item}</li>)}
+					</ul>
+				</div>
+				<div>
+					<ul>
+						{columnTwo.map((item) => <li>{item}</li>)}
+					</ul>
+				</div>
 			</div>
-			<div>
-				<ul>
-					{columnTwo.map((item) => <li>{item}</li>)}
-				</ul>
-			</div>
-		</div>
+		</section>
 
 		<a class="back-link" href="/events/">&larr; Back to Events</a>
-	</HomeHero>
+	</SplitBioLayout>
 </BaseLayout>
+
+<style>
+	:global(.content-wrapper) {
+		--content-max-width: 100vw;
+	}
+</style>
