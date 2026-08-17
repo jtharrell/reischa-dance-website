@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SplitBioLayout from '../../components/SplitBioLayout.astro';
+import GalleryGrid from '../../components/GalleryGrid.astro';
+import headshotsHero from '../../assets/hero/IMG_1586.JPG';
+
+const imageModules = import.meta.glob<{ default: ImageMetadata }>('/src/assets/gallery/headshots/*.jpg', { eager: true });
+const images = Object.keys(imageModules)
+	.sort()
+	.map((path) => imageModules[path].default);
+---
+
+<BaseLayout title="Headshots" description="Reischa's acting headshots.">
+	<SplitBioLayout
+		image={headshotsHero}
+		imageAlt="Reischa Harrell, a Nashville actress"
+		title="Headshots"
+		mediaFraction={0.3}
+	>
+		<GalleryGrid images={images} altPrefix="Reischa headshot" />
+	</SplitBioLayout>
+</BaseLayout>

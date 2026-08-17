@@ -389,26 +389,6 @@ main a:hover {
 	margin: 0.15rem 0 0;
 }
 
-.acting-photos {
-	display: grid;
-	grid-template-columns: 1fr;
-	gap: 1rem;
-	margin-bottom: 1.5rem;
-}
-
-.acting-photos img {
-	width: 100%;
-	height: auto;
-	border-radius: 8px;
-	display: block;
-}
-
-@media (min-width: 40rem) {
-	.acting-photos {
-		grid-template-columns: 1.2fr 1fr 1fr;
-	}
-}
-
 /* Forms */
 
 form label {
