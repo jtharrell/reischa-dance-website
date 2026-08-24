@@ -3,34 +3,36 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="Contact" description="Contact Reischa about bellydance classes, bookings, and events.">
-	<h1>Contact</h1>
+	<div class="plain-page">
+		<h1>Contact</h1>
 
-	<p class="lede">
-		For comments or info about <a href="/classes/">Classes</a> or for
-		booking prices, send an e-mail or call:<br />
-		<strong>Reischa Feuerbacher</strong> &mdash; (615) 593-7119
-	</p>
+		<p class="lede">
+			For comments or info about <a href="/classes/">Classes</a> or for
+			booking prices, send an e-mail or call:<br />
+			<strong>Reischa Feuerbacher</strong> &mdash; (615) 593-7119
+		</p>
 
-	<form method="POST" action="https://formspree.io/f/mlgyvpzr">
-		<input type="hidden" name="_next" value="https://reischadance.com/contact/thanks/" />
-		<input type="hidden" name="_subject" value="New message from reischadance.com" />
-		<input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+		<form method="POST" action="https://formspree.io/f/mlgyvpzr">
+			<input type="hidden" name="_next" value="https://reischadance.com/contact/thanks/" />
+			<input type="hidden" name="_subject" value="New message from reischadance.com" />
+			<input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
 
-		<p>
-			<label for="visitor">Name</label><br />
-			<input type="text" id="visitor" name="name" required />
-		</p>
-		<p>
-			<label for="email">E-mail</label><br />
-			<input type="email" id="email" name="email" required />
-		</p>
-		<p>
-			<label for="note">Message</label><br />
-			<textarea id="note" name="message" rows="8" required></textarea>
-		</p>
-		<p>
-			<button type="submit">Submit</button>
-			<button type="reset">Reset</button>
-		</p>
-	</form>
+			<p>
+				<label for="visitor">Name</label><br />
+				<input type="text" id="visitor" name="name" required />
+			</p>
+			<p>
+				<label for="email">E-mail</label><br />
+				<input type="email" id="email" name="email" required />
+			</p>
+			<p>
+				<label for="note">Message</label><br />
+				<textarea id="note" name="message" rows="8" required></textarea>
+			</p>
+			<p>
+				<button type="submit">Submit</button>
+				<button type="reset">Reset</button>
+			</p>
+		</form>
+	</div>
 </BaseLayout>

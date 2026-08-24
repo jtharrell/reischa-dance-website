@@ -259,14 +259,14 @@ main a:hover {
 	color: var(--color-lavender);
 }
 
-/* Gallery pages: plain white content, no hero photo */
+/* Plain content pages: white background, no hero photo (Gallery, Contact) */
 
-main:has(.gallery-page) {
+main:has(.plain-page) {
 	background: var(--color-surface);
 	color: var(--color-ink);
 }
 
-main:has(.gallery-page) h1 {
+main:has(.plain-page) h1 {
 	font-family: var(--font-script);
 	font-size: clamp(2.5rem, 8vw, 3.5rem);
 	line-height: 1;
@@ -275,17 +275,36 @@ main:has(.gallery-page) h1 {
 	margin: 0 0 2rem;
 }
 
-main:has(.gallery-page) a {
+main:has(.plain-page) a {
 	color: var(--color-maroon);
 }
 
-main:has(.gallery-page) a:hover {
+main:has(.plain-page) a:hover {
 	color: var(--color-mauve);
 }
 
-main:has(.gallery-page) .back-link {
+main:has(.plain-page) .back-link {
 	display: block;
 	text-align: center;
+}
+
+main:has(.plain-page) .lede {
+	color: var(--color-ink-soft);
+}
+
+main:has(.plain-page) form label {
+	color: var(--color-maroon);
+}
+
+main:has(.plain-page) form input[type='text'],
+main:has(.plain-page) form input[type='email'],
+main:has(.plain-page) form textarea {
+	border-color: var(--color-lavender);
+}
+
+main:has(.plain-page) form button[type='reset'] {
+	color: var(--color-ink-soft);
+	border-color: var(--color-lavender);
 }
 
 .sub-links {
