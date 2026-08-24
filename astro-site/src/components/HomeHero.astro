@@ -73,6 +73,28 @@ const capped = Boolean(imageWidth);
 		text-align: center;
 	}
 
+	/* The panel's text sits on the hero photo (desktop) or main's own
+	   background (mobile, where the image stacks above instead of behind
+	   it). Keep both consistently white/ink so contrast doesn't flip
+	   between breakpoints. */
+	:global(main:has(.home-hero)) {
+		background: var(--color-surface);
+		color: var(--color-ink);
+	}
+
+	:global(main:has(.home-hero) h1),
+	:global(main:has(.home-hero) h2) {
+		color: var(--color-maroon);
+	}
+
+	:global(main:has(.home-hero) a) {
+		color: var(--color-maroon);
+	}
+
+	:global(main:has(.home-hero) a:hover) {
+		color: var(--color-mauve);
+	}
+
 	@media (min-width: 56rem) {
 		.home-hero {
 			display: grid;
@@ -118,26 +140,6 @@ const capped = Boolean(imageWidth);
 		.home-hero__panel :global(> *) {
 			width: 100%;
 			max-width: var(--hero-panel-max-width, calc(34.5rem + 20%));
-		}
-
-		.home-hero__panel :global(h1),
-		.home-hero__panel :global(h2),
-		.home-hero__panel :global(p),
-		.home-hero__panel :global(li) {
-			color: var(--color-ink);
-		}
-
-		.home-hero__panel :global(h1),
-		.home-hero__panel :global(h2) {
-			color: var(--color-maroon);
-		}
-
-		.home-hero__panel :global(a) {
-			color: var(--color-maroon);
-		}
-
-		.home-hero__panel :global(a:hover) {
-			color: var(--color-mauve);
 		}
 
 		.home-hero__panel :global(.back-link) {
