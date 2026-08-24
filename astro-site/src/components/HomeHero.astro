@@ -9,6 +9,7 @@ export interface Props {
 	imageWidth?: string;
 	panelAlign?: 'end' | 'center';
 	panelVerticalAlign?: 'start' | 'center';
+	hideImageOnMobile?: boolean;
 }
 
 const {
@@ -19,13 +20,14 @@ const {
 	imageWidth,
 	panelAlign = 'end',
 	panelVerticalAlign = 'center',
+	hideImageOnMobile = false,
 } = Astro.props;
 
 const capped = Boolean(imageWidth);
 ---
 
 <div
-	class:list={['home-hero', { 'home-hero--capped': capped }]}
+	class:list={['home-hero', { 'home-hero--capped': capped }, { 'home-hero--image-desktop-only': hideImageOnMobile }]}
 	style={`--hero-image-position: ${imagePosition}; --hero-panel-max-width: ${panelMaxWidth}; ${imageWidth ? `--hero-image-width: ${imageWidth};` : ''}`}
 >
 	<Image class="home-hero__image" src={image} alt={imageAlt} width={2000} format="webp" />
@@ -73,7 +75,19 @@ const capped = Boolean(imageWidth);
 		text-align: center;
 	}
 
+	/* This hero image is designed to sit behind the text panel with a
+	   scrim overlay (desktop only, see below). Below the breakpoint the
+	   panel stacks under the image instead of overlaying it, so a hero
+	   built for that treatment reads as a big pale gap on its own. */
+	.home-hero--image-desktop-only .home-hero__image {
+		display: none;
+	}
+
 	@media (min-width: 56rem) {
+		.home-hero--image-desktop-only .home-hero__image {
+			display: block;
+		}
+
 		.home-hero {
 			display: grid;
 			min-height: min(72vh, 44rem);
