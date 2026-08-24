@@ -6,16 +6,18 @@ import studioCover from '../../assets/gallery/studio/Studio001.jpg';
 ---
 
 <BaseLayout title="Gallery" description="Photos of Reischa bellydancing live at performances and in the studio.">
-	<h1>Gallery</h1>
-	<div class="gallery-tiles">
-		<a class="gallery-tile" href="/gallery/live/">
-			<Image src={liveCover} alt="Live performance photos" width={480} format="webp" />
-			<span>Live</span>
-		</a>
-		<a class="gallery-tile" href="/gallery/studio/">
-			<Image src={studioCover} alt="Studio photos" width={480} format="webp" />
-			<span>Studio</span>
-		</a>
+	<div class="gallery-page">
+		<h1>Galleries</h1>
+		<div class="gallery-tiles">
+			<a class="gallery-tile" href="/gallery/live/">
+				<Image src={liveCover} alt="Live performance photos" width={480} format="webp" />
+				<span>Live</span>
+			</a>
+			<a class="gallery-tile" href="/gallery/studio/">
+				<Image src={studioCover} alt="Studio photos" width={480} format="webp" />
+				<span>Studio</span>
+			</a>
+		</div>
 	</div>
 </BaseLayout>
 
