@@ -1,45 +1,40 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import HomeHero from '../../components/HomeHero.astro';
+import SplitBioLayout from '../../components/SplitBioLayout.astro';
 import classesHero from '../../assets/hero/classes.jpg';
 ---
 
 <BaseLayout title="Classes" description="Bellydance classes taught by Reischa in Nashville, TN, plus private lessons and special events.">
-	<HomeHero
-		slot="hero"
+	<SplitBioLayout
 		image={classesHero}
 		imageAlt="Reischa in a purple beaded costume, arching backward mid-pose"
-		imageWidth="44rem"
-		panelVerticalAlign="start"
-		panelMaxWidth="none"
+		title="Class schedule"
+		mediaFraction={0.3}
+		mediaWidth="27rem"
+		mediaHeight="48rem"
 	>
-		<h1>Class schedule</h1>
 		<p>Some class updates can be found on <a href="https://www.facebook.com/profile.php?id=61579200180746" target="_blank" rel="noopener noreferrer">this Facebook page</a>.</p>
 
-		<h2><u>1. ONGOING CLASSES</u></h2>
-		<p>Sundays, 4:00 PM &ndash; 5:00 PM @ <a href="/classes/millennium/">Millennium Dance Complex</a></p>
+		<section class="section">
+			<h2><u>1. ONGOING CLASSES</u></h2>
+			<p>Sundays, 4:00 PM &ndash; 5:00 PM @ <a href="/classes/millennium/">Millennium Dance Complex</a></p>
+		</section>
 
-		<h2><u>2. PRIVATE CLASSES &amp; SPECIAL EVENTS</u></h2>
-		<p>Day of the week flexible<br />
-		Planning an event or workshop? Reischa is available for <a href="/contact/">private instruction</a>.</p>
+		<section class="section">
+			<h2><u>2. PRIVATE CLASSES &amp; SPECIAL EVENTS</u></h2>
+			<p>Day of the week flexible<br />
+			Planning an event or workshop? Reischa is available for <a href="/contact/">private instruction</a>.</p>
+		</section>
 
-		<h2><u>3. PAST CLASSES (12 years)</u></h2>
-		<p>Mondays, 5:00 PM &ndash; 6:00 PM @ <a href="/classes/vanderbilt-bellydance/">Vanderbilt University</a></p>
-		<!--<ul>
-			<li><a href="/classes/vanderbilt-bellydance/">Vanderbilt Bellydance (archived)</a></li>
-			<li><a href="/classes/vanderbilt-flamenco/">Vanderbilt Flamenco (archived)</a></li>
-		</ul>-->
+		<section class="section">
+			<h2><u>3. PAST CLASSES (12 years)</u></h2>
+			<p>Mondays, 5:00 PM &ndash; 6:00 PM @ <a href="/classes/vanderbilt-bellydance/">Vanderbilt University</a></p>
+			<!--<ul>
+				<li><a href="/classes/vanderbilt-bellydance/">Vanderbilt Bellydance (archived)</a></li>
+				<li><a href="/classes/vanderbilt-flamenco/">Vanderbilt Flamenco (archived)</a></li>
+			</ul>-->
+		</section>
 
 		<a class="back-link" href="/classes/attire/">Recommended Attire &rarr;</a>
-	</HomeHero>
+	</SplitBioLayout>
 </BaseLayout>
-
-<style>
-	:global(.home-hero__panel h2) {
-		margin-bottom: 0.25rem;
-	}
-
-	:global(.home-hero__panel p) {
-		margin-top: 0;
-	}
-</style>
