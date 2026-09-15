@@ -1,23 +1,24 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
-import liveCover from '../../assets/gallery/live/past/Live001.jpg';
-import studioCover from '../../assets/gallery/studio/Studio001.jpg';
+import recentCover from '../../../assets/gallery/live/recent/recent3.jpg';
+import pastCover from '../../../assets/gallery/live/past/Live001.jpg';
 ---
 
-<BaseLayout title="Gallery" description="Photos of Reischa bellydancing live at performances and in the studio.">
+<BaseLayout title="Live Photos" description="Live performance photos of Reischa bellydancing.">
 	<div class="plain-page">
-		<h1>Galleries</h1>
+		<h1>Live Photos</h1>
 		<div class="gallery-tiles">
-			<a class="gallery-tile" href="/gallery/live/">
-				<Image src={liveCover} alt="Live performance photos" width={480} format="webp" />
-				<span>Live</span>
+			<a class="gallery-tile" href="/gallery/live/recent/">
+				<Image src={recentCover} alt="Recent live performance photos" width={480} format="webp" />
+				<span>Recent</span>
 			</a>
-			<a class="gallery-tile" href="/gallery/studio/">
-				<Image src={studioCover} alt="Studio photos" width={480} format="webp" />
-				<span>Studio</span>
+			<a class="gallery-tile" href="/gallery/live/past/">
+				<Image src={pastCover} alt="Past live performance photos" width={480} format="webp" />
+				<span>Past</span>
 			</a>
 		</div>
+		<a class="back-link" href="/gallery/">&larr; Back to Galleries</a>
 	</div>
 </BaseLayout>
 
@@ -26,6 +27,7 @@ import studioCover from '../../assets/gallery/studio/Studio001.jpg';
 		display: grid;
 		grid-template-columns: 1fr;
 		gap: 1.5rem;
+		margin-bottom: 1.5rem;
 	}
 
 	.gallery-tile {
