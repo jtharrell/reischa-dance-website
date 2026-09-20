@@ -14,7 +14,10 @@ export interface Props {
 
 const { title, description = 'Reischa is a professional belly dance artist, performer, and instructor based in Nashville, TN.' } = Astro.props;
 
-const navLinks = [
+// The site is two sites under one roof: dance at the root, acting under /acting.
+const isActing = Astro.url.pathname === '/acting' || Astro.url.pathname.startsWith('/acting/');
+
+const danceNavLinks = [
 	{ href: '/', label: 'Home' },
 	{ href: '/about/', label: 'About' },
 	{ href: '/classes/', label: 'Classes' },
@@ -24,6 +27,18 @@ const navLinks = [
 	{ href: '/links/', label: 'Links' },
 	{ href: '/contact/', label: 'Contact' },
 ];
+
+const actingNavLinks = [
+	{ href: '/acting/', label: 'Home' },
+	{ href: '/acting/about/', label: 'About' },
+	{ href: '/acting/resume/', label: 'Resume' },
+	{ href: '/acting/headshots/', label: 'Headshots' },
+];
+
+const navLinks = isActing ? actingNavLinks : danceNavLinks;
+const brandHref = isActing ? '/acting/' : '/';
+const titleSuffix = isActing ? 'Reischa Acting' : 'Reischa Dance';
+const footerName = isActing ? 'Reischa Harrell' : 'Reischa Bellydance';
 ---
 
 <!doctype html>
@@ -38,15 +53,19 @@ const navLinks = [
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
-		<title>{title} | Reischa Dance</title>
+		<title>{title} | {titleSuffix}</title>
 	</head>
 	<body>
 		<header class="site-header">
 			<div class="site-header__bar">
-				<a class="site-header__brand" href="/">
-					Reischa
-					<span class="site-header__tagline">Belly Dancer &middot; Actress</span>
-				</a>
+				<div class="site-header__brand">
+					<a class="site-header__name" href={brandHref}>Reischa</a>
+					<span class="site-header__tagline">
+						<a href="/" aria-current={isActing ? undefined : 'true'}>Belly Dancer</a>
+						<span aria-hidden="true">&middot;</span>
+						<a href="/acting/" aria-current={isActing ? 'true' : undefined}>Actress</a>
+					</span>
+				</div>
 				<button
 					class="nav-toggle"
 					id="nav-toggle"
@@ -74,7 +93,7 @@ const navLinks = [
 		</main>
 
 		<footer class="site-footer">
-			<p>&copy; {new Date().getFullYear()} Reischa Bellydance.</p>
+			<p>&copy; {new Date().getFullYear()} {footerName}.</p>
 		</footer>
 
 		<script>

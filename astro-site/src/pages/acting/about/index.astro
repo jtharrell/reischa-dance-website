@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SplitBioLayout from '../../../components/SplitBioLayout.astro';
+import actingHero from '../../../assets/hero/IMG_1570.JPG';
+---
+
+<BaseLayout title="About Reischa" description="Reischa's acting bio, reel, resume, and casting profile links.">
+	<SplitBioLayout
+		image={actingHero}
+		imageAlt="Reischa Harrell, a Nashville actress"
+		title="About Reischa"
+		mediaFraction={0.3}
+	>
+		<p class="lede">
+			Reischa is an actress from Nashville, Tennessee. She loved attending
+			theater and film events as early as she can remember. In high school,
+			her English and Drama teacher gave her several onstage opportunities
+			in school plays and competitions. While in college, she earned
+			another first role as Dunyasha in Anton Chekov's "The Cherry Orchard"
+			with Murfreesboro Ensemble Theatre. Through these experiences, she
+			caught the bug for acting and performing.
+		</p>
+		<p class="lede">
+			She earned a Bachelor of Art in Theatre Performance with a voice
+			minor from Middle Tennessee State University. A few favorite roles
+			include Fastrada in "Pippin" (Boiler Room Theatre), Margaret in "The
+			Selkie" (MTSU), and Lady Capulet in "Romeo and Juliet" (Theatre
+			Ensemble of Nashville). Other credits include Maggie in "Lend Me a
+			Tenor", and Suzanne in the "Murder Room" both at Encore Theatre. She
+			has actively continued studying acting at Lee Strassberg Institute,
+			Actor's Bridge and Nashville Acting School. She is also in demand as
+			a dance performer and teacher.
+		</p>
+	</SplitBioLayout>
+</BaseLayout>
