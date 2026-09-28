@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import placeholderCover from '../../../assets/hero/IMG_1586.JPG';
+
+// Cover each tile with the first photo in its folder, falling back until photos are added.
+const liveModules = import.meta.glob<{ default: ImageMetadata }>('/src/assets/acting/gallery/live/*.{jpg,JPG}', { eager: true });
+const studioModules = import.meta.glob<{ default: ImageMetadata }>('/src/assets/acting/gallery/studio/*.{jpg,JPG}', { eager: true });
+const firstImage = (modules: Record<string, { default: ImageMetadata }>) => {
+	const [first] = Object.keys(modules).sort();
+	return first ? modules[first].default : placeholderCover;
+};
+const liveCover = firstImage(liveModules);
+const studioCover = firstImage(studioModules);
+---
+
+<BaseLayout title="Galleries" description="Photos of Reischa acting live and in the studio.">
+	<div class="plain-page">
+		<h1>Galleries</h1>
+		<div class="gallery-tiles">
+			<a class="gallery-tile" href="/acting/galleries/live/">
+				<Image src={liveCover} alt="Live acting photos" width={480} format="webp" />
+				<span>Live</span>
+			</a>
+			<a class="gallery-tile" href="/acting/galleries/studio/">
+				<Image src={studioCover} alt="Studio photos" width={480} format="webp" />
+				<span>Studio</span>
+			</a>
+		</div>
+	</div>
+</BaseLayout>
+
+<style>
+	.gallery-tiles {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
+	}
+
+	.gallery-tile {
+		position: relative;
+		display: block;
+		border-radius: 10px;
+		overflow: hidden;
+		text-decoration: none;
+	}
+
+	.gallery-tile :global(img) {
+		width: 100%;
+		height: 100%;
+		aspect-ratio: 4 / 3;
+		object-fit: cover;
+		display: block;
+		transition: transform 0.25s ease;
+	}
+
+	.gallery-tile:hover :global(img),
+	.gallery-tile:focus-visible :global(img) {
+		transform: scale(1.04);
+	}
+
+	.gallery-tile span {
+		position: absolute;
+		inset: auto 0 0 0;
+		padding: 1rem;
+		background: linear-gradient(to top, rgb(58 36 48 / 75%), transparent);
+		color: #fff;
+		font-family: var(--font-heading);
+		font-size: 1.5rem;
+	}
+
+	@media (min-width: 40rem) {
+		.gallery-tiles {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+</style>

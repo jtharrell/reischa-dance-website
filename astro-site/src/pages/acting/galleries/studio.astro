@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import GalleryGrid from '../../../components/GalleryGrid.astro';
+
+const imageModules = import.meta.glob<{ default: ImageMetadata }>('/src/assets/acting/gallery/studio/*.{jpg,JPG}', { eager: true });
+const images = Object.keys(imageModules)
+	.sort()
+	.map((path) => imageModules[path].default);
+---
+
+<BaseLayout title="Studio Photos" description="Studio photos of Reischa acting.">
+	<div class="plain-page">
+		<h1>Studio Photos</h1>
+		{images.length > 0
+			? <GalleryGrid images={images} altPrefix="Reischa studio photo" />
+			: <p class="empty">Photos coming soon.</p>}
+		<a class="back-link" href="/acting/galleries/">&larr; Back to Galleries</a>
+	</div>
+</BaseLayout>
+
+<style>
+	.empty {
+		text-align: center;
+		color: var(--color-ink-soft);
+	}
+</style>
