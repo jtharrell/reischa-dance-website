@@ -4,9 +4,11 @@ import { Image, getImage } from 'astro:assets';
 export interface Props {
 	images: ImageMetadata[];
 	altPrefix: string;
+	/** Low-resolution photos the lightbox shows at their own size instead of enlarging to fill the frame. */
+	noEnlarge?: ImageMetadata[];
 }
 
-const { images, altPrefix } = Astro.props;
+const { images, altPrefix, noEnlarge = [] } = Astro.props;
 
 const fullSizes = await Promise.all(
 	images.map((img) => getImage({ src: img, width: 1600, format: 'webp' })),
@@ -15,7 +17,7 @@ const fullSizes = await Promise.all(
 
 <div class="gallery-grid">
 	{images.map((img, i) => (
-		<button type="button" class="gallery-item" data-full={fullSizes[i].src} data-alt={`${altPrefix} ${i + 1}`}>
+		<button type="button" class="gallery-item" data-full={fullSizes[i].src} data-alt={`${altPrefix} ${i + 1}`} data-max-width={noEnlarge.includes(img) ? img.width : undefined}>
 			<Image src={img} alt={`${altPrefix} ${i + 1}`} width={480} format="webp" loading={i < 6 ? 'eager' : 'lazy'} />
 		</button>
 	))}
@@ -36,11 +38,17 @@ const fullSizes = await Promise.all(
 		const items = Array.from(grid.querySelectorAll<HTMLButtonElement>('.gallery-item'));
 		let current = -1;
 
+		// Lets the CSS scale every photo to the same frame, including ones smaller than the viewport.
+		image.addEventListener('load', () => {
+			image.style.setProperty('--ratio', String(image.naturalWidth / image.naturalHeight));
+		});
+
 		const show = (index: number) => {
 			current = (index + items.length) % items.length;
 			const item = items[current];
 			image.src = item.dataset.full ?? '';
 			image.alt = item.dataset.alt ?? '';
+			image.style.maxWidth = item.dataset.maxWidth ? `${item.dataset.maxWidth}px` : '';
 		};
 
 		items.forEach((item, index) => {
@@ -122,9 +130,7 @@ const fullSizes = await Promise.all(
 
 	.lightbox__image {
 		display: block;
-		max-width: 92vw;
-		max-height: 92vh;
-		width: auto;
+		width: min(92vw, calc(92vh * var(--ratio, 1.5)));
 		height: auto;
 		margin: 0 auto;
 	}
