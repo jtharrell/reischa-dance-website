@@ -6,9 +6,11 @@ export interface Props {
 	altPrefix: string;
 	/** Low-resolution photos the lightbox shows at their own size instead of enlarging to fill the frame. */
 	noEnlarge?: ImageMetadata[];
+	/** Photographer credits, overlaid at the bottom of the thumbnail and the lightbox photo. */
+	credits?: Map<ImageMetadata, string>;
 }
 
-const { images, altPrefix, noEnlarge = [] } = Astro.props;
+const { images, altPrefix, noEnlarge = [], credits = new Map() } = Astro.props;
 
 const fullSizes = await Promise.all(
 	images.map((img) => getImage({ src: img, width: 1600, format: 'webp' })),
@@ -17,8 +19,9 @@ const fullSizes = await Promise.all(
 
 <div class="gallery-grid">
 	{images.map((img, i) => (
-		<button type="button" class="gallery-item" data-full={fullSizes[i].src} data-alt={`${altPrefix} ${i + 1}`} data-max-width={noEnlarge.includes(img) ? img.width : undefined}>
+		<button type="button" class="gallery-item" data-full={fullSizes[i].src} data-alt={`${altPrefix} ${i + 1}`} data-max-width={noEnlarge.includes(img) ? img.width : undefined} data-credit={credits.get(img)}>
 			<Image src={img} alt={`${altPrefix} ${i + 1}`} width={480} format="webp" loading={i < 6 ? 'eager' : 'lazy'} />
+			{credits.has(img) && <span class="photo-credit">Photo by: {credits.get(img)}</span>}
 		</button>
 	))}
 </div>
@@ -26,7 +29,10 @@ const fullSizes = await Promise.all(
 <dialog class="lightbox" id="gallery-lightbox">
 	<button type="button" class="lightbox__close" data-lightbox-close aria-label="Close">&times;</button>
 	<button type="button" class="lightbox__nav lightbox__nav--prev" data-lightbox-prev aria-label="Previous photo">&#8249;</button>
-	<img class="lightbox__image" id="gallery-lightbox-img" alt="" />
+	<figure class="lightbox__frame">
+		<img class="lightbox__image" id="gallery-lightbox-img" alt="" />
+		<figcaption class="photo-credit" id="gallery-lightbox-credit" hidden></figcaption>
+	</figure>
 	<button type="button" class="lightbox__nav lightbox__nav--next" data-lightbox-next aria-label="Next photo">&#8250;</button>
 </dialog>
 
@@ -34,7 +40,8 @@ const fullSizes = await Promise.all(
 	const grid = document.querySelector('.gallery-grid');
 	const dialog = document.getElementById('gallery-lightbox') as HTMLDialogElement | null;
 	const image = document.getElementById('gallery-lightbox-img') as HTMLImageElement | null;
-	if (grid && dialog && image) {
+	const credit = document.getElementById('gallery-lightbox-credit');
+	if (grid && dialog && image && credit) {
 		const items = Array.from(grid.querySelectorAll<HTMLButtonElement>('.gallery-item'));
 		let current = -1;
 
@@ -49,6 +56,8 @@ const fullSizes = await Promise.all(
 			image.src = item.dataset.full ?? '';
 			image.alt = item.dataset.alt ?? '';
 			image.style.maxWidth = item.dataset.maxWidth ? `${item.dataset.maxWidth}px` : '';
+			credit.textContent = item.dataset.credit ? `Photo by: ${item.dataset.credit}` : '';
+			credit.hidden = !item.dataset.credit;
 		};
 
 		items.forEach((item, index) => {
@@ -80,6 +89,7 @@ const fullSizes = await Promise.all(
 	}
 
 	.gallery-item {
+		position: relative;
 		display: block;
 		width: 100%;
 		break-inside: avoid;
@@ -104,6 +114,17 @@ const fullSizes = await Promise.all(
 		transform: scale(1.03);
 	}
 
+	.photo-credit {
+		position: absolute;
+		inset: auto 0 0 0;
+		padding: 1.25rem 0.5rem 0.35rem;
+		background: linear-gradient(to top, rgb(58 36 48 / 70%), transparent);
+		color: #fff;
+		font-size: 0.7rem;
+		text-align: right;
+		pointer-events: none;
+	}
+
 	@media (min-width: 30rem) {
 		.gallery-grid {
 			columns: 3;
@@ -126,6 +147,17 @@ const fullSizes = await Promise.all(
 
 	.lightbox::backdrop {
 		background: rgb(58 36 48 / 88%);
+	}
+
+	.lightbox__frame {
+		position: relative;
+		width: fit-content;
+		margin: 0 auto;
+	}
+
+	.lightbox__frame .photo-credit {
+		padding: 2rem 0.75rem 0.5rem;
+		font-size: 0.85rem;
 	}
 
 	.lightbox__image {

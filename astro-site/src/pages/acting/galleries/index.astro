@@ -2,16 +2,16 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
 import placeholderCover from '../../../assets/hero/IMG_1586.JPG';
+// Client-chosen cover for the Studio tile.
+import studioCover from '../../../assets/acting/gallery/live/Live8.jpg';
 
-// Cover each tile with the first photo in its folder, falling back until photos are added.
+// Cover the Live tile with the first photo in its folder, falling back until photos are added.
 const liveModules = import.meta.glob<{ default: ImageMetadata }>('/src/assets/acting/gallery/live/*.{jpg,JPG}', { eager: true });
-const studioModules = import.meta.glob<{ default: ImageMetadata }>('/src/assets/acting/gallery/studio/*.{jpg,JPG}', { eager: true });
 const firstImage = (modules: Record<string, { default: ImageMetadata }>) => {
 	const [first] = Object.keys(modules).sort();
 	return first ? modules[first].default : placeholderCover;
 };
 const liveCover = firstImage(liveModules);
-const studioCover = firstImage(studioModules);
 ---
 
 <BaseLayout title="Galleries" description="Photos of Reischa acting live and in the studio.">

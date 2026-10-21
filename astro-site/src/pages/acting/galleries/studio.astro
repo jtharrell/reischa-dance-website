@@ -6,13 +6,23 @@ const imageModules = import.meta.glob<{ default: ImageMetadata }>('/src/assets/a
 const images = Object.keys(imageModules)
 	.sort()
 	.map((path) => imageModules[path].default);
+
+// Photographer credit per file name, shown over each photo.
+const creditsByFile: Record<string, string> = {
+	'tim-temple-parthenon-2.jpg': 'Tim Temple',
+};
+const credits = new Map(
+	Object.entries(imageModules)
+		.filter(([path]) => creditsByFile[path.split('/').pop()!])
+		.map(([path, mod]) => [mod.default, creditsByFile[path.split('/').pop()!]]),
+);
 ---
 
 <BaseLayout title="Studio Photos" description="Studio photos of Reischa acting.">
 	<div class="plain-page">
 		<h1>Studio Photos</h1>
 		{images.length > 0
-			? <GalleryGrid images={images} altPrefix="Reischa studio photo" />
+			? <GalleryGrid images={images} altPrefix="Reischa studio photo" credits={credits} />
 			: <p class="empty">Photos coming soon.</p>}
 		<a class="back-link" href="/acting/galleries/">&larr; Back to Galleries</a>
 	</div>
