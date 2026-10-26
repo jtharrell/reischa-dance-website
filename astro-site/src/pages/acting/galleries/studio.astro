@@ -8,6 +8,7 @@ const images = Object.keys(imageModules)
 	.map((path) => imageModules[path].default);
 
 // Photographer credit per file name, shown over each photo.
+// Credits are hidden for now; pass credits={credits} to GalleryGrid to show them again.
 const creditsByFile: Record<string, string> = {
 	'tim-temple-parthenon-2.jpg': 'Tim Temple',
 	'tim-temple-parthenon-3.jpg': 'Tim Temple',
@@ -26,7 +27,7 @@ const credits = new Map(
 	<div class="plain-page">
 		<h1>Studio Photos</h1>
 		{images.length > 0
-			? <GalleryGrid images={images} altPrefix="Reischa studio photo" credits={credits} />
+			? <GalleryGrid images={images} altPrefix="Reischa studio photo" />
 			: <p class="empty">Photos coming soon.</p>}
 		<a class="back-link" href="/acting/galleries/">&larr; Back to Galleries</a>
 	</div>
