@@ -1,14 +1,67 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import SplitBioLayout from '../../components/SplitBioLayout.astro';
-import actingHero from '../../assets/acting/gallery/studio/tim-temple-parthenon-2.jpg';
+import parthenon2 from '../../assets/acting/gallery/studio/tim-temple-parthenon-2.jpg';
+import parthenon4 from '../../assets/acting/gallery/studio/tim-temple-parthenon-4.JPG';
+import parthenon6 from '../../assets/acting/gallery/studio/tim-temple-parthenon-6.jpg';
 ---
 
 <BaseLayout title="Acting" description="Reischa's acting bio, reel, resume, and casting profile links.">
-	<SplitBioLayout
-		image={actingHero}
-		imageAlt="Reischa Harrell, a Nashville actress"
-		title="Reischa Harrell"
-		mediaFraction={0.3}
-	/>
+	<div class="acting-triptych">
+		<Image src={parthenon2} alt="Reischa Harrell, a Nashville actress" width={1200} format="webp" />
+		<div class="acting-triptych__center">
+			<Image src={parthenon4} alt="Reischa Harrell at the Parthenon" width={1200} format="webp" />
+			<h1>Reischa Harrell</h1>
+		</div>
+		<Image src={parthenon6} alt="Reischa Harrell at the Parthenon" width={1200} format="webp" />
+	</div>
 </BaseLayout>
+
+<style>
+	:global(main:has(.acting-triptych)) {
+		background: var(--color-surface);
+		color: var(--color-ink);
+	}
+
+	/* Drop the wrapper's top padding so the space above the photos
+	   matches the gap between them. */
+	:global(main:has(.acting-triptych) .content-wrapper) {
+		padding-top: 0;
+	}
+
+	.acting-triptych {
+		--triptych-gap: 1.5rem;
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: var(--triptych-gap);
+		padding-top: var(--triptych-gap);
+	}
+
+	.acting-triptych :global(img) {
+		width: 100%;
+		height: auto;
+		display: block;
+		border-radius: 0.5rem;
+	}
+
+	.acting-triptych h1 {
+		font-family: var(--font-script);
+		font-size: clamp(2.5rem, 5vw, 3.5rem);
+		line-height: 1;
+		color: var(--color-maroon);
+		text-align: center;
+		margin: 1.5rem 0 0;
+	}
+
+	@media (min-width: 48rem) {
+		.acting-triptych {
+			grid-template-columns: repeat(3, 1fr);
+			align-items: start;
+			/* 1.5x the content column, centered and breaking out of it,
+			   capped so it never runs past the viewport edges. */
+			width: min(150%, calc(100vw - 3rem));
+			margin-left: 50%;
+			translate: -50%;
+		}
+	}
+</style>
